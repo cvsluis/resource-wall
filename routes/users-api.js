@@ -53,6 +53,7 @@ router.post("/:id", (req, res) => {
   const userProfileChange = req.body;
 
   userQueries.editUserProfile(userId, userProfileChange)
+  // use response to let user know if changes were saved or not
     .then((response) => {
       res.send(response);
     })
