@@ -7,4 +7,16 @@ const getUsers = () => {
     });
 };
 
+// takes in user id
+// return user information in json format
+const getUserProfile = (userID) => {
+
+};
+
+// takes in user id and user object with any changes
+// returns confirmation message? (Changes saved successfully! or Failed to update.)
+const editUserProfile = (id, userProfileChange) => {
+  
+};
+
 module.exports = { getUsers };
