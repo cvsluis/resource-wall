@@ -6,10 +6,12 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
+// View all users
 router.get('/', (req, res) => {
+  // render views/users.ejs
   res.render('users');
-}); 
+});
 
 module.exports = router;
