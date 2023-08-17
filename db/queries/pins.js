@@ -28,11 +28,4 @@ const addOnePin = (pin) => {
 
 };
 
-// takes in pin id
-// returns all information pertaining to that pin
-// also comments, likes and ratings
-const editOnePin = (pinId) => {
-
-};
-
 module.exports = { getAllPins, getOnePin, addOnePin, editOnePin };
