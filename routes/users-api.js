@@ -51,8 +51,22 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// View edit users page
+router.get('/:id/edit', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+  userQueries.getUserProfile(userId)
+    .then((response) => {
+      // render views/user_profile.ejs
+      res.render('user_profile', response);
+    });
+});
+
 // Edit user profile page (need to be signed in)
-router.post("/:id", (req, res) => {
+router.post("/:id/edit", (req, res) => {
   // check for session cookie
   const userId = req.session.userId;
   if (!userId) {
@@ -62,7 +76,6 @@ router.post("/:id", (req, res) => {
   // set variable to form body
   const userProfileChange = req.body;
 
-  //
   userQueries.editUserProfile(userId, userProfileChange)
     // use response to let user know if changes were saved or not
     .then((response) => {
