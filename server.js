@@ -38,6 +38,8 @@ app.use(
 const userApiRoutes = require('./routes/users-api');
 const usersRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
+const pinsApiRoutes = require('./routes/pins-api');
+const pinsRoutes = require('./routes/pins');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -45,6 +47,8 @@ const loginRoutes = require('./routes/login');
 app.use('/api/users', userApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
+app.use('/api/pins', pinsApiRoutes);
+app.use('/pins', pinsRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
