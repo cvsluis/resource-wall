@@ -16,3 +16,15 @@ body {
     rgba(163, 208, 219, 1) 100%
   );
 }
+
+nav {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  font-family: Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  justify-content: space-between;
+}
