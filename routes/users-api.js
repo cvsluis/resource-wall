@@ -32,11 +32,12 @@ router.get('/:id', (req, res) => {
   // call getUserProfile with userId as argument
   userQueries.getUserProfile(userId)
     .then(result1 => {
+      // call getUserProfile with userId as argument
       getUsersPins(userId)
         .then(result2 => {
-
+          // save results to template variables
           const templateVars = {
-            profile: result1.users,
+            user: result1.users,
             pins: result2.pins
           };
           // render pins_user with profile as template variable object
