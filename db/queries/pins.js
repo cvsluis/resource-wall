@@ -9,7 +9,7 @@ const getUsers = () => {
 
 // model after LightBnB getAllProperties
 // check for categories, ratings
-// potential second parameter 
+// potential second parameter
 const getAllPins = (options) => {
 
 };
