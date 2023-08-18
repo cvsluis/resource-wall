@@ -1,0 +1,33 @@
+nav {
+  display: flex;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  font-family: Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#left-nav {
+  justify-content: space-between;
+}
+
+#search input {
+  font-family: FontAwesome;
+  border-radius: 25px;
+  width: 100%;
+}
+
+#right-nav button {
+  height: 2rem;
+  width: 5rem;
+  border-radius: 25px;
+  border: none;
+}

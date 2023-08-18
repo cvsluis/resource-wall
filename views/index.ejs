@@ -12,28 +12,17 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <!-- this will be an icon with link to home page (refresh if on home page): -->
-      <span>linkfolio</span>
-      <a href="">@bobsmith</a>
-      <form id="form">
-        <!-- Search bar will also include magnifying glass icon -->
-        <input type="search" id="query" name="q" placeholder="Search">
-      </form>
-      <!-- Plus icon: -->
-      <a href="">+</a>
-      <!-- User icon: -->
-      <a href="">U</a>
-      <button>Log out</button>
-    </nav>
-  <h1>Have fun! 🥔</h1>
+  <%- include('partials/_nav.ejs') %>
 </body>
 
 </html>
