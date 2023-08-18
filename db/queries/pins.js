@@ -28,4 +28,4 @@ const addOnePin = (pin) => {
 
 };
 
-module.exports = { getAllPins, getUserPins, getOnePin, addOnePin };
+module.exports = { getAllPins, getOnePin, addOnePin };

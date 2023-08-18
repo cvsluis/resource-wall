@@ -25,4 +25,4 @@ const editUserProfile = (id, userProfileChange) => {
 
 };
 
-module.exports = { getUserProfile, editUserProfile };
+module.exports = { getUserProfile,  getUserPins, editUserProfile };
