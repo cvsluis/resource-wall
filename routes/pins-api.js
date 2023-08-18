@@ -73,7 +73,7 @@ router.post('/', (req, res) => {
 });
 
 // Add comment
-router.post('/comment', (req, res) => {
+router.post('/comments', (req, res) => {
   // check for session cookie
   const userId = req.session.userId;
   if (!userId) {
@@ -91,4 +91,26 @@ router.post('/comment', (req, res) => {
         .json({ error: err.message });
     });
 });
+
+// Add rating
+router.post('/ratings', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const rating = req.body;
+  interactionQueries.addRating(userId, rating)
+    .then(rating => {
+      res.json({ rating });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
 module.exports = router;

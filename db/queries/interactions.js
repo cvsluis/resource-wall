@@ -17,19 +17,19 @@ const addComment = (owner_id, comment) => {
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const addRating = (rating) => {
+const addRating = (owner_id, rating) => {
 
 };
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const addLike = (like) => {
+const addLike = (owner_id, like) => {
 
 };
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const removeLike = (like) => {
+const removeLike = (owner_id, like) => {
 
 };
 
