@@ -17,7 +17,7 @@ const getUserProfile = (userID) => {
 // return user's saved pins and liked pins in json format
 const getUserPins = (userId) => {
 
-}
+};
 
 // takes in user id and user object with any changes
 // returns confirmation message? (Changes saved successfully! or Failed to update.)
@@ -25,4 +25,4 @@ const editUserProfile = (id, userProfileChange) => {
 
 };
 
-module.exports = { getUserProfile, getUserPins, editUserProfile };
+module.exports = { getUserProfile, editUserProfile };
