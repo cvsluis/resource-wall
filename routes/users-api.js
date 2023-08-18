@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
   userQueries.getUserProfile(userId)
     .then(result1 => {
       // call getUserProfile with userId as argument
-      pinQueries.getUsersPins(userId)
+      pinQueries.getUserPins(userId)
         .then(result2 => {
           // save results to template variables
           const templateVars = {
