@@ -16,11 +16,12 @@ const getAllPins = (options) => {
 
   // Initialize the base query string that retrieves pin data along with owner names
   let queryString = `
-  SELECT pins.title, pins.description, pins.image, users.name AS owner_name, categories.title AS category_title, ratings.rating AS average_rating
-  FROM pins
-  JOIN users ON pins.owner_id = users.id
-  LEFT JOIN categories ON pins.category_id = categories.id
-  LEFT JOIN ratings ON pins.id = ratings.pin_id`;
+   SELECT pins.title, pins.description, pins.image, users.name AS owner_name,
+           categories.title AS category_title, AVG(ratings.rating) AS average_rating
+    FROM pins
+    JOIN users ON pins.owner_id = users.id
+    LEFT JOIN categories ON pins.category_id = categories.id
+    LEFT JOIN ratings ON pins.id = ratings.pin_id`;
 
   // Initialize arrays to store WHERE and HAVING clauses
   const whereClauses = [];
@@ -35,7 +36,7 @@ const getAllPins = (options) => {
   // Check if the 'minimum_rating' option is provided
   if (options.minimum_rating) {
     queryParams.push(options.minimum_rating);
-    havingClauses.push(`avg(property_reviews.rating) >= $${queryParams.length}`);
+    havingClauses.push(`average_rating >= $${queryParams.length}`);
   }
 
   // Build the WHERE part of the query if there are clauses
