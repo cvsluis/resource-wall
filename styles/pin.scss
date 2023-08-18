@@ -1,0 +1,20 @@
+#pin {
+  display: flex;
+  width: 50%;
+  height: 50rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 75px;
+  border: 0.25px solid grey;
+  box-shadow: inset;
+  border-radius: 25px;
+}
+
+#comments article {
+  display: flex;
+  justify-content: flex-start;
+  background-color: red;
+  border-radius: 25px;
+  background-color: #fff;
+}
