@@ -7,8 +7,9 @@
   flex-wrap: wrap;
   margin-top: 75px;
   border: 0.25px solid grey;
-  box-shadow: inset;
+  // Add shadow rather than border for box
   border-radius: 25px;
+  padding: 3rem;
 }
 
 #comments article {
