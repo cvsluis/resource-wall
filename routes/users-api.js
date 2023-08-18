@@ -8,6 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const userQueries = require('../db/queries/users');
+const pinQueries = require('../db/queries/pins');
 
 router.get('/', (req, res) => {
   userQueries.getUsers()
@@ -31,9 +32,18 @@ router.get('/:id', (req, res) => {
 
   // call getUserProfile with userId as argument
   userQueries.getUserProfile(userId)
-    .then(profile => {
-      // render pins_user with profile as template variable object
-      res.render("pins_user", profile);
+    .then(result1 => {
+      // call getUserProfile with userId as argument
+      pinQueries.getUsersPins(userId)
+        .then(result2 => {
+          // save results to template variables
+          const templateVars = {
+            user: result1.users,
+            pins: result2.pins
+          };
+          // render pins_user with profile as template variable object
+          res.render("pins_user", templateVars);
+        });
     })
     .catch(err => {
       res
