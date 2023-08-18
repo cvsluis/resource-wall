@@ -17,8 +17,8 @@
 - As a user, I shouldn’t be able to edit another user’s profile, because I don’t own that account.
 
 ### Logged In vs. Logged Out
-- As a logged out user, I should only be able see the login/register pages because I want to be part of a closed network that requires users to log in.
-- As a logged in user, I should be redirected to the main page with _all_ user pins (including my own) after logging in because I am most interested in the core feature of this application (a compilation of study resources).
-- As a logged in user, I should be able to see my username in the nav bar because I want to be able to quickly and easily confirm that I am logged in to my account.
+- As a logged out user, I am able to see but not save pins because I want my pins to be saved and displayed on my personal account on the app.
+- As a logged in user, if there is a future version of this app involving a login page I should be redirected to the main page with _all_ user pins (including my own) after logging in because I am most interested in the core feature of this application (a compilation of study resources).
+- As a logged in user, I should be able to see my username displayed in the nav bar because I want to be able to quickly and easily confirm that I am logged in to my account.
 - Given that I am not logged in, when I click on a pin I can only view it.
-- Given that I am logged in or logged out, when I click on the search bar I can type a filter word and at the same time a drop down of - categories will appear that I can choose from.
+- Given that I am logged in or logged out, when I click on the search bar I can type a filter word and at the same time a drop down of categories will appear that I can choose from.
