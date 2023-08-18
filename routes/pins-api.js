@@ -112,5 +112,44 @@ router.post('/ratings', (req, res) => {
     });
 });
 
+// Add like
+router.post('/likes', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const like = req.body;
+  interactionQueries.addLike(userId, like)
+    .then(like => {
+      res.json({ like });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// Remove like
+router.post('/likes/:id/delete', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const like = req.body;
+  interactionQueries.removeLike(userId, like)
+    .then(like => {
+      res.json({ like });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
 module.exports = router;
