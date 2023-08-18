@@ -11,7 +11,7 @@ const getUsers = () => {
 
 // takes in an object containing all of the comment details
 // returns result.rows
-const addComment = (comment) => {
+const addComment = (owner_id, comment) => {
 
 };
 
