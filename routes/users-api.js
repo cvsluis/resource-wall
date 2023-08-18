@@ -10,6 +10,8 @@ const router = express.Router();
 const userQueries = require('../db/queries/users');
 const pinQueries = require('../db/queries/pins');
 
+// example GET request to get all users
+// will delete when finished with routes
 router.get('/', (req, res) => {
   userQueries.getUsers()
     .then(users => {
@@ -22,13 +24,11 @@ router.get('/', (req, res) => {
     });
 });
 
-// View user profile page
+// View user profile page (don't need to be signed in)
+// Also view user's saved and liked pins
 router.get('/:id', (req, res) => {
-  // check for session cookie
-  const userId = req.session.userId;
-  if (!userId) {
-    return res.send({ error: "error" });
-  }
+  // set userId to value from GET request
+  const userId = req.params.id;
 
   // call getUserProfile with userId as argument
   userQueries.getUserProfile(userId)
@@ -52,18 +52,33 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Edit user profile page
-router.post("/:id", (req, res) => {
+// View edit users page
+router.get('/:id/edit', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+  userQueries.getUserProfile(userId)
+    .then((response) => {
+      // render views/user_profile.ejs
+      res.render('user_profile', response);
+    });
+});
+
+// Edit user profile page (need to be signed in)
+router.post("/:id/edit", (req, res) => {
   // check for session cookie
   const userId = req.session.userId;
   if (!userId) {
     return res.send({ error: "not logged in" });
   }
 
+  // set variable to form body
   const userProfileChange = req.body;
 
   userQueries.editUserProfile(userId, userProfileChange)
-  // use response to let user know if changes were saved or not
+    // use response to let user know if changes were saved or not
     .then((response) => {
       res.send(response);
     })
