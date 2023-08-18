@@ -8,7 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const pinQueries = require('../db/queries/pins');
-const pinQueries = require('../db/queries/interactions');
+const interactionQueries = require('../db/queries/interactions');
 
 //View all pins
 router.get('/', (req, res) => {

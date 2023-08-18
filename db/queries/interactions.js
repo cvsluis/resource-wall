@@ -34,4 +34,4 @@ const removeLike = (like) => {
 };
 
 
-module.exports = { getPinComments, addComment, getPinRating, addRating, addLike, removeLike };
+module.exports = { addComment, addRating, addLike, removeLike };
