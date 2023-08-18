@@ -66,6 +66,12 @@ const getAllPins = (options) => {
   });
 };
 
+// takes in user id
+// return user's saved pins and liked pins in json format
+const getUserPins = (userId) => {
+
+};
+
 // takes in pin id
 // returns all information pertaining to that pin
 // also comments, likes and ratings
