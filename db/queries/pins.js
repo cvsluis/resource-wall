@@ -107,8 +107,8 @@ const addOnePin = (pin) => {
     pin.image
   ];
   const queryString = `
-  INSERT INTO pins (owner_id, category_id, url, title, description, image) 
-  VALUES ($1, $2, $3, $4, $5, $6) 
+  INSERT INTO pins (owner_id, category_id, url, title, description, image)
+  VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *;`;
 
   return db
@@ -118,4 +118,4 @@ const addOnePin = (pin) => {
     });
 };
 
-module.exports = { getAllPins, getUserPins, getOnePin, addOnePin };
+module.exports = { getAllPins, getOnePin, addOnePin };
