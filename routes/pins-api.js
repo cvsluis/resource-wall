@@ -8,6 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const pinQueries = require('../db/queries/pins');
+const pinQueries = require('../db/queries/interactions');
 
 //View all pins
 router.get('/', (req, res) => {
@@ -71,4 +72,23 @@ router.post('/', (req, res) => {
     });
 });
 
+// Add comment
+router.post('/comment', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const comment = req.body;
+  interactionQueries.addComment(userId, comment)
+    .then(comment => {
+      res.json({ comment });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 module.exports = router;
