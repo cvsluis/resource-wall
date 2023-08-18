@@ -124,4 +124,4 @@ const addOnePin = (pin) => {
     });
 };
 
-module.exports = { getAllPins, getOnePin, addOnePin };
+module.exports = { getAllPins, getUserPins, getOnePin, addOnePin };
