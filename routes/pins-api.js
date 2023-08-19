@@ -8,6 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const pinQueries = require('../db/queries/pins');
+const interactionQueries = require('../db/queries/interactions');
 
 //View all pins
 router.get('/', (req, res) => {
@@ -63,6 +64,86 @@ router.post('/', (req, res) => {
     .then(pin => {
       // send data in json format
       res.json({ pin });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// Add comment
+router.post('/comments', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const comment = req.body;
+  interactionQueries.addComment(userId, comment)
+    .then(comment => {
+      res.json({ comment });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// Add rating
+router.post('/ratings', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const rating = req.body;
+  interactionQueries.addRating(userId, rating)
+    .then(rating => {
+      res.json({ rating });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// Add like
+router.post('/likes', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const like = req.body;
+  interactionQueries.addLike(userId, like)
+    .then(like => {
+      res.json({ like });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// Remove like
+router.post('/likes/:id/delete', (req, res) => {
+  // check for session cookie
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.send({ error: "not logged in" });
+  }
+
+  const like = req.body;
+  interactionQueries.removeLike(userId, like)
+    .then(like => {
+      res.json({ like });
     })
     .catch(err => {
       res

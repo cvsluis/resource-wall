@@ -66,6 +66,12 @@ const getAllPins = (options) => {
   });
 };
 
+// takes in user id
+// return user's saved pins and liked pins in json format
+const getUserPins = (userId) => {
+
+};
+
 // takes in pin id
 // returns all information pertaining to that pin
 // also comments, likes and ratings
@@ -107,8 +113,8 @@ const addOnePin = (pin) => {
     pin.image
   ];
   const queryString = `
-  INSERT INTO pins (owner_id, category_id, url, title, description, image) 
-  VALUES ($1, $2, $3, $4, $5, $6) 
+  INSERT INTO pins (owner_id, category_id, url, title, description, image)
+  VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *;`;
 
   return db
@@ -118,4 +124,4 @@ const addOnePin = (pin) => {
     });
 };
 
-module.exports = { getAllPins, getOnePin, addOnePin };
+module.exports = { getAllPins, getUserPins, getOnePin, addOnePin };

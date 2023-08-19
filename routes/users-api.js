@@ -8,6 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const userQueries = require('../db/queries/users');
+const pinQueries = require('../db/queries/pins');
 
 // example GET request to get all users
 // will delete when finished with routes
@@ -33,7 +34,7 @@ router.get('/:id', (req, res) => {
   userQueries.getUserProfile(userId)
     .then(result1 => {
       // call getUserProfile with userId as argument
-      getUsersPins(userId)
+      pinQueries.getUserPins(userId)
         .then(result2 => {
           // save results to template variables
           const templateVars = {
