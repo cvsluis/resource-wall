@@ -1,0 +1,23 @@
+.grid {
+  margin-top: 75px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+}
+
+.grid > article {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #333;
+  border-radius: 25px;
+}
+
+article:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.grid .text {
+  padding: 20px;
+}
