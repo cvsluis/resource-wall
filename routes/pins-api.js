@@ -26,6 +26,11 @@ router.get('/', (req, res) => {
     });
 });
 
+// View add one pin page
+router.get('/new', (req, res) => {
+  res.render("pins_new");
+});
+
 // View one pin
 router.get('/:id', (req, res) => {
   // set pinId to url parameter
