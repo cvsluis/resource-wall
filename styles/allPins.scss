@@ -1,9 +1,11 @@
 .grid {
-  margin-top: 75px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 20px;
-  align-items: stretch;
+  max-width: 100%;
+  column-gap: 1em;
+  padding: 2em;
 }
 
 .grid > article {
@@ -11,11 +13,13 @@
   background-color: #fff;
   color: #333;
   border-radius: 25px;
+  width: 235px;
+  height: 335px;
 }
 
 article:hover {
   opacity: 0.75;
-  cursor: pointer;
+  cursor: zoom-in;
 }
 
 .grid .text {
