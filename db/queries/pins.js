@@ -110,11 +110,10 @@ const addOnePin = (pin) => {
     pin.url,
     pin.title,
     pin.description,
-    pin.image
   ];
   const queryString = `
-  INSERT INTO pins (owner_id, category_id, url, title, description, image)
-  VALUES ($1, $2, $3, $4, $5, $6)
+  INSERT INTO pins (owner_id, category_id, url, title, description)
+  VALUES ($1, $2, $3, $4, $5)
   RETURNING *;`;
 
   return db

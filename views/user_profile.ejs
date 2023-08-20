@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/edit-profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <% 
+    // Temporarily use a hardcoded userId for testing
+    let userId = 1;
+
+    // TODO: Uncomment and implement the logic below to fetch userId from database
+%>
+    <%- include('partials/_nav.ejs') %>
+    <div class="container">
+        <h2>Edit Profile</h2>
+        <a href="/api/users/<%= userId %>" class="back-button">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+        <p>Information you add here is visible to anyone who can view your profile.</p>
+        <form action="/api/users/<%= userId %>/edit" method="POST">
+            <div class="form-field full-name-container"> 
+                <div class="full-name">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName">
+                </div>
+
+                <div class="full-name">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName">
+                </div>
+            </div>
+
+            <div class="form-field about-input">
+                <label for="about">About</label>
+                <textarea id="about" name="about" rows="4" cols="50"></textarea> 
+            </div>
+
+            <div class="form-field">
+                <label for="pronouns">Pronouns</label>
+                <input type="text" id="pronouns" name="pronouns">
+            </div>
+
+            <div class="form-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+
+            <button type="submit" id="save-button">Save</button>
+        </form>
+    </div>
+</body>
+</html>
