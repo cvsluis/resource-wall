@@ -6,12 +6,13 @@ const interactionQueries = require('../db/queries/interactions');
 // /pins/
 //View all pins
 router.get('/', (req, res) => {
+  const userId = req.session.userId;
   // call getAllPins with req.query as argument for search functionality
   // do we want a limit?
   pinQueries.getAllPins(req.query)
     .then(pins => {
       // render index with profile as template variable object
-      res.render("home", pins);
+      res.render("home", { pins, userId });
     })
     .catch(err => {
       res
@@ -31,7 +32,7 @@ router.get('/new', (req, res) => {
 
   interactionQueries.getAllCategories()
   .then(categories => {
-    res.render("pins_new", { categories });
+    res.render("pins_new", { categories, userId });
   })
 });
 
