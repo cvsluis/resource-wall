@@ -5,15 +5,12 @@
   align-items: center;
   flex-wrap: wrap;
   margin-top: 75px;
+  margin-bottom: 25px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   color: #333;
   border-radius: 25px;
   padding: 3rem;
-}
-
-.close-button {
-  justify-self: end;
 }
 
 form {
@@ -27,10 +24,16 @@ form h2 {
   margin: 0;
 }
 
+form p {
+  color: gray;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
 .form-inputs {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 #add-pin-title {

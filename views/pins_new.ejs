@@ -41,7 +41,10 @@
             placeholder="Tell everyone what your Pin is about" required></textarea>
         </div>
         <div class="form-inputs">
-          <h2>Categories</h2>
+          <div class="form-inputs">
+            <h2>Categories</h2>
+            <p>Must select one category:</p>
+          </div>
           <div class="categories">
             <% for (const category of categories) { %>
               <input type="radio" value="<%= category.id %>" name="category_id" id="<%= category.id %>" required>
