@@ -22,7 +22,9 @@
     <%- include('partials/_nav.ejs') %>
     <div class="container">
         <h2>Edit Profile</h2>
-        <i class="fa-solid fa-xmark"></i>
+        <a href="/api/users/<%= userId %>" class="back-button">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
         <p>Information you add here is visible to anyone who can view your profile.</p>
         <form action="/api/users/<%= userId %>/edit" method="POST">
             <div class="form-field full-name-container"> 
