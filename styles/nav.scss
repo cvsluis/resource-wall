@@ -1,7 +1,7 @@
 nav {
   display: flex;
   position: fixed;
-  height: 50px;
+  height: 70px;
   width: 100%;
   font-family: Helvetica, sans-serif;
   background-color: #fff;
@@ -22,15 +22,27 @@ a {
   width: 20%;
 }
 
+#left-nav img {
+  width: 40px;
+}
+
+#left-nav img:hover {
+  opacity: 80%;
+}
+
+#search {
+  width: 55%;
+}
+
 #search input {
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: FontAwesome;
   border-radius: 25px;
-  padding-left: 10px;
-  height: 2rem;
-  width: 50rem;
+  padding-left: 20px;
+  height: 2.5rem;
+  width: 100%;
   border: none;
   background-color: #e5e5e5;
   font-size: 16px;
