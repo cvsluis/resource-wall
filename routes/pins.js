@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
   const userId = req.session.userId;
 
-  res.render("pins_new", userId);
+  res.render("pins_new", { userId });
 });
 
 // /pins/:id
@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
   pinQueries.getOnePin(pinId)
     .then(pin => {
       // render pins_user with profile as template variable object
-      res.render("pins_show", pin);
+      res.render("pins_show", { pin });
     })
     .catch(err => {
       res

@@ -29,8 +29,8 @@
 
     <div id="pin-new">
 
-      <a href="/" id="close-button"><i class="fa-solid fa-x"></i></a>
-      <form action="/" method="POST">
+      <a href="/" class="close-button"><i class="fa-solid fa-x"></i></a>
+      <form action="/api/pins/" method="POST">
         <input type="text" id="add-pin-title" name="title" placeholder="Add your title">
         <div class="form-inputs">
           <label for="url">URL</label>
@@ -38,7 +38,7 @@
         </div>
         <div  class="form-inputs">
           <label for="about">About</label>
-          <textarea id="add-pin-about" name="about" rows="10" maxlength="250"
+          <textarea id="add-pin-about" name="description" rows="10" maxlength="250"
             placeholder="Tell everyone what your Pin is about"></textarea>
         </div>
         <div class="categories">

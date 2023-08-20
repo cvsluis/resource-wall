@@ -1,7 +1,6 @@
 #pin-new {
   display: flex;
   width: 50%;
-  height: 45rem;
   justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
@@ -13,7 +12,7 @@
   padding: 3rem;
 }
 
-#close-button {
+.close-button {
   justify-self: end;
 }
 
