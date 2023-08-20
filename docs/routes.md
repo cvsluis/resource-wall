@@ -4,10 +4,11 @@ Read    GET   /users/:id/edit        // View user edit profile page
 Edit    POST  /users/:id/edit        // Edit user profile 
 
 Login
-Read    GET   /users/login/:id       // Login user     
+Read    GET   /login/:id             // Login user     
 
 Pins
 Browse  GET   /pins                  // View all pins in database
+Read	  GET	  /pins/new		           // View add one pin
 Read    GET   /pins/:id              // View one pin
 Add     POST  /pins                  // Add pin
 
