@@ -28,7 +28,6 @@
   <%- include('partials/_nav.ejs') %>
 
     <div id="pin-new">
-
       <a href="/" class="close-button"><i class="fa-solid fa-x"></i></a>
       <form action="/api/pins/" method="POST">
         <input type="text" id="add-pin-title" name="title" placeholder="Add your title">
@@ -36,40 +35,22 @@
           <label for="url">URL</label>
           <input type="url" id="add-pin-url" name="url" placeholder="https://example.com">
         </div>
-        <div  class="form-inputs">
+        <div class="form-inputs">
           <label for="about">About</label>
           <textarea id="add-pin-about" name="description" rows="10" maxlength="250"
             placeholder="Tell everyone what your Pin is about"></textarea>
         </div>
-        <div class="categories">
+        <div class="form-inputs">
           <h2>Categories</h2>
-          <div class="tags">
-            <div class="tag">
-              <span>JavaScript</span>
-            </div>
-            <div class="tag">
-              <span>JavaScript</span>
-            </div>
-            <div class="tag">
-              <span>JavaScript</span>
-            </div>
-            <div class="tag">
-              <span>JavaScript</span>
-            </div>
-            <div class="tag">
-              <span>JavaScript</span>
-            </div>
-            <div class="tag">
-              <span>JavaScript</span>
-            </div>
-            <div class="tag">
-              <span>JavaScript</span>
-            </div>
+          <div class="categories">
+            <% for (const category of categories) { %>
+              <input type="radio" value="<%= category.id %>" name="category_id" id="<%= category.id %>">
+              <label for="<%= category.id %>"><%= category.title %></label>
+            <% } %>
           </div>
         </div>
         <input type="submit" id="add-pin-save" value="Save">
       </form>
-
     </div>
 
 </body>
