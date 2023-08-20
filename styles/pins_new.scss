@@ -40,7 +40,7 @@ form h2 {
   gap: 16px;
 }
 
-#tags {
+.tags {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -48,7 +48,7 @@ form h2 {
   gap: 6px;
 }
 
-#tag {
+.tag {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +61,7 @@ form h2 {
   padding-right: 10px;
 }
 
-#tag:hover {
+.tag:hover {
   cursor: pointer;
   background-color: #6b63ff74;
 }
