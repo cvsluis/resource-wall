@@ -2,7 +2,7 @@
 INSERT INTO categories (title)
 VALUES
  ('JavaScript'),
- ('Tools_&_Productivity'),
+ ('Tools & Productivity'),
  ('React'),
  ('Design'),
  ('HTML'),
@@ -11,11 +11,10 @@ VALUES
  ('Databases'),
  ('Networking'),
  ('Python'),
- ('Mental_health'),
+ ('Mental Health'),
  ('Ruby'),
  ('Git'),
  ('Tutorials'),
- ('Study_ambience'),
+ ('Study Ambience'),
  ('Technology'),
  ('Events');
- 

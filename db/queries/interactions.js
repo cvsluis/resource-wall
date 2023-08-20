@@ -8,6 +8,10 @@ const getUsers = () => {
     });
 };
 
+// returns all categories
+const getAllCategories = () => {
+ return db.query('SELECT id, title FROM categories').then(data => data.rows);
+};
 
 // takes in an object containing all of the comment details
 // returns result.rows
@@ -34,4 +38,4 @@ const removeLike = (owner_id, like) => {
 };
 
 
-module.exports = { addComment, addRating, addLike, removeLike };
+module.exports = { getAllCategories, addComment, addRating, addLike, removeLike };
