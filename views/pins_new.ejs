@@ -30,21 +30,21 @@
     <div id="pin-new">
       <a href="/" class="close-button"><i class="fa-solid fa-x"></i></a>
       <form action="/api/pins/" method="POST">
-        <input type="text" id="add-pin-title" name="title" placeholder="Add your title">
+        <input type="text" id="add-pin-title" name="title" placeholder="Add your title" required>
         <div class="form-inputs">
           <label for="url">URL</label>
-          <input type="url" id="add-pin-url" name="url" placeholder="https://example.com">
+          <input type="url" id="add-pin-url" name="url" placeholder="https://example.com" required>
         </div>
         <div class="form-inputs">
           <label for="about">About</label>
           <textarea id="add-pin-about" name="description" rows="10" maxlength="250"
-            placeholder="Tell everyone what your Pin is about"></textarea>
+            placeholder="Tell everyone what your Pin is about" required></textarea>
         </div>
         <div class="form-inputs">
           <h2>Categories</h2>
           <div class="categories">
             <% for (const category of categories) { %>
-              <input type="radio" value="<%= category.id %>" name="category_id" id="<%= category.id %>">
+              <input type="radio" value="<%= category.id %>" name="category_id" id="<%= category.id %>" required>
               <label for="<%= category.id %>"><%= category.title %></label>
             <% } %>
           </div>
