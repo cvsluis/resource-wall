@@ -7,15 +7,16 @@ Login
 Read    GET   /login/:id             // Login user     
 
 Pins
-Browse  GET   /pins                  // View all pins in database
+Browse  GET   /pins/                 // View all pins in database
 Read	  GET	  /pins/new		           // View add one pin
 Read    GET   /pins/:id              // View one pin
-Add     POST  /pins                  // Add pin
 
-Add     POST  /pins/comments         // Add comment
+Add     POST  /api/pins              // Add pin
 
-Edit    POST  /pins/ratings/:id      // Update rating (maybe stretch?)
-Add     POST  /pins/ratings          // Add rating
+Add     POST  /api/pins/comments     // Add comment
 
-Add     POST  /pins/likes            // Add like
-Delete  POST  /pins/likes/:id/delete // Remove like
+Edit    POST  /api/pins/ratings/:id      // Update rating (maybe stretch?)
+Add     POST  /api/pins/ratings          // Add rating
+
+Add     POST  /api/pins/likes            // Add like
+Delete  POST  /api/pins/likes/:id/delete // Remove like
