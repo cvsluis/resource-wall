@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pinQueries = require('../db/queries/pins');
+const interactionQueries = require('../db/queries/interactions');
 
 // /pins/
 //View all pins
@@ -23,8 +24,15 @@ router.get('/', (req, res) => {
 // View add one pin page
 router.get('/new', (req, res) => {
   const userId = req.session.userId;
+  if (!userId) {
+    // update this to error page with link to login?
+    res.redirect("/");
+  }
 
-  res.render("pins_new", { userId });
+  interactionQueries.getAllCategories()
+  .then(categories => {
+    res.render("pins_new", { categories });
+  })
 });
 
 // /pins/:id
