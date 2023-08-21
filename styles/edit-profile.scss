@@ -13,7 +13,7 @@
   height: fit-content;
   max-width: 50%;
   color: #5f636a;
-  margin-top: 5%;
+  margin-top: 95px;
 }
 /* 'information you add here' text */
 .container p {
@@ -32,6 +32,7 @@
   margin-bottom: 5px;
 }
 
+/* design to have first and last name on same line 
 .full-name-container {
   display: flex;
   justify-content: space-between;
@@ -41,6 +42,7 @@
 .full-name {
   width: 49%; 
 }
+*/
 
 .form-field input[type="text"] {
   width: 100%;
@@ -78,4 +80,9 @@
   border-radius: 15px; 
   box-sizing: border-box;
   resize: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: grey; 
+  opacity: 1; 
 }

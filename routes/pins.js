@@ -6,12 +6,14 @@ const interactionQueries = require('../db/queries/interactions');
 // /pins/
 //View all pins
 router.get('/', (req, res) => {
+  // logged in user
+  const userId = req.session.userId;
   // call getAllPins with req.query as argument for search functionality
   // do we want a limit?
-  pinQueries.getAllPins(req.query)
+  pinQueries.getAllPins(req.query.q)
     .then(pins => {
-      // render index with profile as template variable object
-      res.render("home", pins);
+      // render index with pins and userId
+      res.render("index", { pins, userId });
     })
     .catch(err => {
       res
@@ -31,13 +33,14 @@ router.get('/new', (req, res) => {
 
   interactionQueries.getAllCategories()
   .then(categories => {
-    res.render("pins_new", { categories });
+    res.render("pins_new", { categories, userId });
   })
 });
 
 // /pins/:id
 // View one pin
-router.get('/pins/:id', (req, res) => {
+router.get('/:id', (req, res) => {
+  const userId = req.session.userId;
   // set pinId to url parameter
   const pinId = req.params.id;
   if (!pinId) {
@@ -47,8 +50,8 @@ router.get('/pins/:id', (req, res) => {
   // call getOnePin with pinId as argument
   pinQueries.getOnePin(pinId)
     .then(pin => {
-      // render pins_user with profile as template variable object
-      res.render("pins_show", { pin });
+      // render pins_show with profile as template variable object
+      res.render("pins_show", { pin, userId });
     })
     .catch(err => {
       res

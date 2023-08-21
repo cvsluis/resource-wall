@@ -47,7 +47,7 @@ const getAllPins = (options) => {
 
   // GROUP BY clause
   queryString += `
-    GROUP BY pins.id`;
+    GROUP BY pins.id, pins.title, users.name, categories.title`;
 
   // Build the HAVING part of the query if there are clauses
   if (havingClauses.length > 0) {
