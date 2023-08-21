@@ -3,7 +3,7 @@ const router = express.Router();
 const pinQueries = require('../db/queries/pins');
 const interactionQueries = require('../db/queries/interactions');
 
-// /pins/
+// /pins/ - this is what the actual route would be
 //View all pins
 router.get('/', (req, res) => {
   // logged in user
