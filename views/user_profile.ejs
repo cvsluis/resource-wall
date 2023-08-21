@@ -16,42 +16,41 @@
     <%- include('partials/_nav.ejs') %>
     <div class="container">
         <h2>Edit Profile</h2>
-        <a href="/users/<%= id %>" class="back-button">
+        <a href="/users/<%= userId %>" class="back-button">
             <i class="fa-solid fa-xmark"></i>
         </a>
         <p>Information you add here is visible to anyone who can view your profile.</p>
-        <form action="/api/users/<%= id %>/edit" method="POST">
+        <form action="/api/users/<%= userId %>/edit" method="POST">
             <div class="form-field full-name-container"> 
                 <div class="full-name">
                     <label for="firstName">Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder='<%= name %>'>
+                    <input type="text" id="firstName" name="firstName" value='<%= profile.name %>'>
                 </div>
-
                 <!-- Hide the Last Name field -->
                 <!--
                 <div class="full-name">
                     <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName">
+                    <input type="text" id="lastName" name="lastName" value="">
                 </div>
                 -->
             </div>
 
             <div class="form-field about-input">
                 <label for="about">About</label>
-                <textarea id="about" name="about" rows="4" cols="50" placeholder="<%= about_me %>"></textarea> 
+                <textarea id="about" name="about" rows="4" cols="50"><%= profile.about_me %></textarea> 
             </div>
 
             <!-- Hide the Pronouns field -->
             <!--
             <div class="form-field">
                 <label for="pronouns">Pronouns</label>
-                <input type="text" id="pronouns" name="pronouns">
+                <input type="text" id="pronouns" name="pronouns" value="">
             </div>
             -->
 
             <div class="form-field">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="<%= username %>">
+                <input type="text" id="username" name="username" value="<%= profile.username %>">
             </div>
 
             <button type="submit" id="save-button">Save</button>
