@@ -3,7 +3,9 @@
     <% for (const pin of pins) { %>
       <article>
         <div class="text">
-          <p><%= pin.description %></p>
+          <a href="/pins/<%= pin.id %>" class="card">
+            <p><%= pin.description %></p>
+          </a>
         </div>
         <div class="meta-text">
           <h3><%= pin.title %></h3>
