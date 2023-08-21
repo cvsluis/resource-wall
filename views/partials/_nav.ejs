@@ -2,19 +2,20 @@
 <nav>
   <!-- this will be an icon with link to home page (refresh if on home page): -->
   <div id="left-nav">
-    <a href=""><i class="fa-solid fa-circle"></i></a>
-    <a href="">@bobsmith</a>
+    <a href="/"><img src="/assets/drawing1.png" alt="Linkfolio logo" /></a>
   </div>
-  <div id="search">
-    <form>
+  <div class="search">
+    <form method="GET" action="/pins/">
       <!-- Search bar will also include magnifying glass icon -->
-      <input type="search" id="query" name="q" placeholder="&#xF002;">
+      <input type="search" class="fontAwesome" id="query" name="q" placeholder="&#xF002;" value="">
     </form>
   </div>
   <div id="right-nav">
-    <!-- Plus icon: -->
-    <a href="/pins/new"><i class="fa-solid fa-plus"></i></a>
-    <!-- User icon: -->
-    <a href=""><i class="fa-solid fa-user"></i></a>
+    <% if (userId) { %>
+      <!-- Plus icon: -->
+      <a href="/pins/new" class="hover-gray"><i class="fa-solid fa-plus"></i></a>
+      <!-- User icon: -->
+      <a href="/users/<%= userId %>" class="hover-gray"><i class="fa-solid fa-user hover"></i></a>
+      <% } %>
   </div>
 </nav>
