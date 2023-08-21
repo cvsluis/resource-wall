@@ -40,7 +40,7 @@ router.get('/new', (req, res) => {
 // /pins/:id
 // View one pin
 router.get('/:id', (req, res) => {
-  const userId = req.session.cookie;
+  const userId = req.session.userId;
   // set pinId to url parameter
   const pinId = req.params.id;
   if (!pinId) {

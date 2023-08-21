@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 // Also view user's saved and liked pins
 router.get('/:id', (req, res) => {
   // logged in user
-  const userId = req.session.cookie;
+  const userId = req.session.userId;
   // user profile that will be rendered
   const paramsUserId = req.params.id;
 
