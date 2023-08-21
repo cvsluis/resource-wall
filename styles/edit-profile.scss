@@ -32,7 +32,7 @@
   margin-bottom: 5px;
 }
 
-/* design to have first and last name on same line 
+/* design to have first and last name on same 
 .full-name-container {
   display: flex;
   justify-content: space-between;
@@ -80,9 +80,4 @@
   border-radius: 15px; 
   box-sizing: border-box;
   resize: none;
-}
-
-input::placeholder, textarea::placeholder {
-  color: grey; 
-  opacity: 1; 
 }
