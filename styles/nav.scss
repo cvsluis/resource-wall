@@ -64,3 +64,15 @@ a {
   border-radius: 25px;
   border: none;
 }
+
+.hover-gray {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 11px;
+}
+
+.hover-gray:hover {
+  border-radius: 50%;
+  background-color: #e5e5e5;
+}
