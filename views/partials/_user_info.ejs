@@ -1,0 +1,23 @@
+<!-- views/partials/_user_info.ejs -->
+<div class="user-info">
+  <h2 class="user-name">Bob Smith</h2>
+  <div class="user-details">
+      <span class="user-username">
+          @bobsmith
+          <!-- TODO: Connect the username to the database -->
+      </span>
+      <span class="user-pronouns">
+          He/Him
+          <!-- TODO:  Create pronouns schema? Connect the pronouns to the database -->
+      </span>
+  </div>
+  <p class="user-pins">
+      19 Ideas Pinned
+      <!-- TODO: Implement a function to dynamically count and display the number of pins -->
+  </p>
+  <p class="user-about">
+      Hi! i'm Bob. I'm studying web development with Lighthouse Labs. I'm most interested in back-end development so you'll see lots of content featuring back end tech!
+      <!-- TODO: Connect the about section to the database -->
+  </p>
+  <a href="/api/users/123/edit" class="edit-profile-btn">Edit Profile</a>
+</div>
