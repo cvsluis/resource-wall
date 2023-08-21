@@ -6,7 +6,6 @@ const interactionQueries = require('../db/queries/interactions');
 // /pins/ - this is what the actual route would be
 //View all pins
 router.get('/', (req, res) => {
-  console.log("we are here")
   // call getAllPins with req.query as argument for search functionality
   // do we want a limit?
   pinQueries.getAllPins(req.query)
@@ -31,9 +30,9 @@ router.get('/new', (req, res) => {
   }
 
   interactionQueries.getAllCategories()
-  .then(categories => {
-    res.render("pins_new", { categories });
-  })
+    .then(categories => {
+      res.render("pins_new", { categories });
+    });
 });
 
 // /pins/:id
