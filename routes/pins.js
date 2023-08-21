@@ -6,12 +6,13 @@ const interactionQueries = require('../db/queries/interactions');
 // /pins/
 //View all pins
 router.get('/', (req, res) => {
+  // logged in user
   const userId = req.session.userId;
   // call getAllPins with req.query as argument for search functionality
   // do we want a limit?
   pinQueries.getAllPins(req.query)
     .then(pins => {
-      // render index with profile as template variable object
+      // render home with pins and userId
       res.render("home", { pins, userId });
     })
     .catch(err => {
@@ -39,6 +40,7 @@ router.get('/new', (req, res) => {
 // /pins/:id
 // View one pin
 router.get('/:id', (req, res) => {
+  const userId = req.session.cookie;
   // set pinId to url parameter
   const pinId = req.params.id;
   if (!pinId) {
@@ -48,8 +50,8 @@ router.get('/:id', (req, res) => {
   // call getOnePin with pinId as argument
   pinQueries.getOnePin(pinId)
     .then(pin => {
-      // render pins_user with profile as template variable object
-      res.render("pins_show", { pin });
+      // render pins_show with profile as template variable object
+      res.render("pins_show", { pin, userId });
     })
     .catch(err => {
       res
