@@ -77,26 +77,21 @@ const getUserPins = (userId) => {
 // also comments, likes and ratings
 const getOnePin = (pinId) => {
   const queryString = `
-  SELECT pins.*, avg_rating.average_rating, comments.description, comments.created_at
+  SELECT *, avg_rating.average_rating, categories.title as category_name
   FROM pins
-  LEFT JOIN (
-    SELECT pin_id, description, created_at
-    FROM comments
-    WHERE pin_id = $1
-    ORDER BY created_at
-  ) AS comments ON pins.id = comments.pin_id
   LEFT JOIN (
     SELECT pin_id, AVG(rating) AS average_rating
     FROM ratings
     GROUP BY pin_id
   ) AS avg_rating ON pins.id = avg_rating.pin_id
+  JOIN categories ON categories.id = pins.category_id
   WHERE pins.id = $1;
 `;
 
   return db
     .query(queryString, [pinId])
     .then((result) => {
-      return result.rows;
+      return result.rows[0];
     });
 };
 
