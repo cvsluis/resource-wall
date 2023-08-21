@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   const userId = req.session.userId;
   // call getAllPins with req.query as argument for search functionality
   // do we want a limit?
-  pinQueries.getAllPins(req.query)
+  pinQueries.getAllPins(req.query.q)
     .then(pins => {
       // render home with pins and userId
       res.render("home", { pins, userId });
