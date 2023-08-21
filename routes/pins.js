@@ -3,15 +3,16 @@ const router = express.Router();
 const pinQueries = require('../db/queries/pins');
 const interactionQueries = require('../db/queries/interactions');
 
-// /pins/
+// /pins/ - this is what the actual route would be
 //View all pins
 router.get('/', (req, res) => {
+  console.log("we are here")
   // call getAllPins with req.query as argument for search functionality
   // do we want a limit?
   pinQueries.getAllPins(req.query)
     .then(pins => {
       // render index with profile as template variable object
-      res.render("home", pins);
+      res.render("index", { pins });
     })
     .catch(err => {
       res
