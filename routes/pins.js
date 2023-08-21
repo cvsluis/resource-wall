@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
   // do we want a limit?
   pinQueries.getAllPins(req.query.q)
     .then(pins => {
-      // render home with pins and userId
-      res.render("home", { pins, userId });
+      // render index with pins and userId
+      res.render("index", { pins, userId });
     })
     .catch(err => {
       res
