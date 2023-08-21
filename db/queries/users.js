@@ -12,8 +12,8 @@ const getUsers = () => {
 const getUserProfile = (userID) => {
   // Use SQL query to fetch the user's profile data by ID
   const query = `
-    SELECT id, name, email, username, about_me 
-    FROM users 
+    SELECT id, name, email, username, about_me
+    FROM users
     WHERE id = $1
   `;
 

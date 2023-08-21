@@ -10,7 +10,7 @@ const getUsers = () => {
 
 // returns all categories
 const getAllCategories = () => {
- return db.query('SELECT id, title FROM categories').then(data => data.rows);
+  return db.query('SELECT id, title FROM categories').then(data => data.rows);
 };
 
 // takes in an object containing all of the comment details

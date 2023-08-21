@@ -37,7 +37,7 @@ router.get('/new', (req, res) => {
 
 // /pins/:id
 // View one pin
-router.get('/:id', (req, res) => {
+router.get('/pins/:id', (req, res) => {
   // set pinId to url parameter
   const pinId = req.params.id;
   if (!pinId) {
