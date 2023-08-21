@@ -35,18 +35,20 @@ a {
   width: 55%;
 }
 
+.fontAwesome {
+  font-family: 'Helvetica', FontAwesome, sans-serif;
+}
+
 .search input {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: FontAwesome;
   border-radius: 25px;
   padding-left: 20px;
   height: 2.5rem;
   width: 100%;
   border: none;
   background-color: #e5e5e5;
-  font-size: 16px;
 }
 
 #right-nav {
