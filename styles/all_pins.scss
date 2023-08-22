@@ -1,12 +1,12 @@
 .grid {
   margin-top: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   grid-gap: 20px;
   max-width: 100%;
   column-gap: 2em;
-  padding: 2em 0em 0em;
+  padding: 2.5em 4em 0em;
 }
 
 div.text {
