@@ -1,5 +1,3 @@
-const pinQueries = require('./db/queries/pins');
-
 // load .env data into process.env
 require('dotenv').config();
 
@@ -58,18 +56,7 @@ app.use('/api/pins', pinsApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  // logged in user
-  const userId = req.session.userId;
-  pinQueries.getAllPins()
-    .then(pins => {
-      // render index with pins and userId
-      res.render("index", { pins, userId });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+  res.redirect('/pins/');
 });
 
 app.listen(PORT, () => {
