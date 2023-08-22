@@ -44,10 +44,10 @@ router.post('/comments', (req, res) => {
     return res.send({ error: "not logged in" });
   }
 
-  const comment = req.body;
+  const comment = req.body.comment;
   interactionQueries.addComment(userId, comment)
-    .then(() => {
-      res.redirect("/pins/");
+    .then((comment) => {
+      res.json({comment});
     })
     .catch(err => {
       res
