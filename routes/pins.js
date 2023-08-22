@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
       interactionQueries.getComments(pinId)
         .then(comments => {
           // render pins_show with profile as template variable object
-          res.render("pins_show", { pin, comments, userId });
+          res.render("pins_show", { pin, comments, userId, pinId });
         });
     })
     .catch(err => {

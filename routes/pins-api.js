@@ -35,17 +35,22 @@ router.post('/', (req, res) => {
     });
 });
 
-// /api/pins/comments
+// /api/pins/:id/comments
 // Add comment
-router.post('/comments', (req, res) => {
+router.post(':id/comments', (req, res) => {
+  const paramsId = req.params.id;
   // check for session cookie
   const userId = req.session.userId;
   if (!userId) {
     return res.send({ error: "not logged in" });
   }
 
-  const comment = req.body.comment;
-  interactionQueries.addComment(userId, comment)
+  const comment = req.body;
+  comment.pin_id = paramsId;
+  comment.owner_id = userId;
+  comment.description = req.body.description;
+
+  interactionQueries.addComment(comment)
     .then((comment) => {
       res.json({comment});
     })
