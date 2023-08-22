@@ -134,7 +134,7 @@ WHERE likes.owner_id = $1
 // also comments, likes and ratings
 const getOnePin = (pinId) => {
   const queryString = `
-  SELECT *, avg_rating.average_rating, categories.title as category_name
+  SELECT *, pins.title, avg_rating.average_rating, categories.title as category_name
   FROM pins
   LEFT JOIN (
     SELECT pin_id, AVG(rating) AS average_rating
