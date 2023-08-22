@@ -93,7 +93,39 @@ const getAllPins = (options) => {
 // takes in user id
 // return user's saved pins and liked pins in json format
 const getUserPins = (userId) => {
+  const query = `
+  SELECT 
+  pins.id,
+  pins.url,
+  pins.title,
+  pins.description,
+  pins.image
+FROM pins 
+WHERE pins.owner_id = $1
 
+UNION
+
+SELECT 
+  pins.id,
+  pins.url,
+  pins.title,
+  pins.description,
+  pins.image
+FROM pins
+JOIN likes ON pins.id = likes.pin_id
+WHERE likes.owner_id = $1
+  `;
+
+  return db
+    .query(query, [userId])
+    .then((result) => {
+      const pins = result.rows;
+      if (!pins) {
+        throw new Error('No pins found for this user');
+      }
+
+      return pins;
+    });
 };
 
 // takes in pin id
