@@ -99,8 +99,10 @@ const getUserPins = (userId) => {
   pins.url,
   pins.title,
   pins.description,
-  pins.image
+  pins.image,
+  users.name AS owner_name
 FROM pins 
+join users on pins.owner_id = users.id
 WHERE pins.owner_id = $1
 
 UNION
@@ -110,9 +112,11 @@ SELECT
   pins.url,
   pins.title,
   pins.description,
-  pins.image
+  pins.image,
+  users.name AS owner_name
 FROM pins
 JOIN likes ON pins.id = likes.pin_id
+join users on pins.owner_id = users.id
 WHERE likes.owner_id = $1
   `;
 
