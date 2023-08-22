@@ -23,7 +23,7 @@ article {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 10px;
   max-width: 235px;
   justify-content: center;
   font-size: 0.9rem;
@@ -41,6 +41,7 @@ div.icon-username {
   display: flex;
   align-items: center;
   gap: 5px;
+  height: 1.5rem;
 }
 
 article:hover {
