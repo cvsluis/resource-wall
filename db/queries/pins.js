@@ -18,7 +18,8 @@ const getAllPins = (options) => {
   let queryString = `
     SELECT pins.id, title, description, image, users.name AS owner_name
     FROM pins
-    JOIN users on pins.owner_id = users.id;`;
+    JOIN users on pins.owner_id = users.id
+    ORDER BY pins.created_at DESC;`;
 
   // Execute the query using db.query with the queryParams
   return db
@@ -94,18 +95,18 @@ const getAllPins = (options) => {
 // return user's saved pins and liked pins in json format
 const getUserPins = (userId) => {
   const query = `
-  SELECT 
+  SELECT
   pins.id,
   pins.url,
   pins.title,
   pins.description,
   pins.image
-FROM pins 
+FROM pins
 WHERE pins.owner_id = $1
 
 UNION
 
-SELECT 
+SELECT
   pins.id,
   pins.url,
   pins.title,
@@ -133,7 +134,7 @@ WHERE likes.owner_id = $1
 // also comments, likes and ratings
 const getOnePin = (pinId) => {
   const queryString = `
-  SELECT *, avg_rating.average_rating, categories.title as category_name
+  SELECT *, pins.title, avg_rating.average_rating, categories.title as category_name
   FROM pins
   LEFT JOIN (
     SELECT pin_id, AVG(rating) AS average_rating

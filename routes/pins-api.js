@@ -25,9 +25,8 @@ router.post('/', (req, res) => {
 
   // call getOnePin with pinId as argument
   pinQueries.addOnePin(newPin)
-    .then(pin => {
-      // send data in json format
-      res.json({ pin });
+    .then(() => {
+      res.redirect("/pins/");
     })
     .catch(err => {
       res
@@ -48,7 +47,7 @@ router.post('/comments', (req, res) => {
   const comment = req.body;
   interactionQueries.addComment(userId, comment)
     .then(() => {
-      res.redirect("/pins/")
+      res.redirect("/pins/");
     })
     .catch(err => {
       res
