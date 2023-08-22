@@ -61,14 +61,17 @@
         <div class="comments">
           <% for (const comment of comments) { %>
             <article class="comment">
-              <i id="comment-icon" class="fa-solid fa-user"></i>
-              <div id="user-timestamp">
+              <div class="comment-user">
+                <i id="comment-icon" class="fa-solid fa-user"></i>
                 <h5><%= comment.name %></h5>
-                <h6><%= comment.created_at %></h6>
               </div>
               <p><%= comment.description %></p>
             </article>
+            <hr>
             <% } %>
+            <form method="POST" action="/api/pins/comments">
+              <input type="text" id="add-comment" name="comment" placeholder="Add a comment">
+            </form>
         </div>
       </div>
     </div>
