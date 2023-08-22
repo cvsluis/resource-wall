@@ -16,9 +16,9 @@ const getAllPins = (options) => {
 
   // Initialize the base query string that retrieves pin data along with owner names
   let queryString = `
-  SELECT title, description, image, users.name AS owner_name
-  FROM pins
-  join users on pins.owner_id = users.id;`;
+    SELECT pins.id, title, description, image, users.name AS owner_name
+    FROM pins
+    JOIN users on pins.owner_id = users.id;`;
 
   // Execute the query using db.query with the queryParams
   return db
