@@ -10,16 +10,31 @@ const getUsers = () => {
 // model after LightBnB getAllProperties
 // check for categories, ratings
 // potential second parameter
-const getAllPins = (options) => {
+const getAllPins = (categoryTitle) => {
   // Initialize an array to store the query parameters
   const queryParams = [];
 
   // Initialize the base query string that retrieves pin data along with owner names
   let queryString = `
-    SELECT pins.id, title, description, image, users.name AS owner_name
+    SELECT pins.title, pins.description, pins.image, users.name AS owner_name,
+    categories.title AS category_title, AVG(ratings.rating) AS average_rating
     FROM pins
-    JOIN users on pins.owner_id = users.id
-    ORDER BY pins.created_at DESC;`;
+    JOIN users ON pins.owner_id = users.id
+    LEFT JOIN categories ON pins.category_id = categories.id
+    LEFT JOIN ratings ON pins.id = ratings.pin_id
+  `;
+
+  // Check if categoryTitle exists and add a WHERE clause to filter by it
+  if (categoryTitle) {
+    queryParams.push(`%${categoryTitle}%`);
+    queryString += `WHERE categories.title ILIKE $${queryParams.length} `;
+  }
+
+  // Grouping the results by the pin id, owner name, and category title
+  queryString += `
+    GROUP BY pins.id, users.name, categories.title
+    ORDER BY pins.created_at DESC;
+  `;
 
   // Execute the query using db.query with the queryParams
   return db
@@ -28,68 +43,6 @@ const getAllPins = (options) => {
       return result.rows;
     });
 };
-
-
-// ––––––––––––––– COMMENTING OUT FOR NOW – RETURN TO THIS FUNCTION LATER ––––––––––––––– //
-
-// const getAllPins = (options) => {
-//   // Initialize an array to store the query parameters
-//   const queryParams = [];
-
-//   // Initialize the base query string that retrieves pin data along with owner names
-//   let queryString = `
-//     SELECT pins.title, pins.description, pins.image, users.name AS owner_name,
-//     categories.title AS category_title, AVG(ratings.rating) AS average_rating
-//     FROM pins
-//     JOIN users ON pins.owner_id = users.id
-//     LEFT JOIN categories ON pins.category_id = categories.id
-//     LEFT JOIN ratings ON pins.id = ratings.pin_id`;
-
-//   // Initialize arrays to store WHERE and HAVING clauses
-//   const whereClauses = [];
-//   const havingClauses = [];
-
-//   // Check options and build clauses and queryParams accordingly
-//   if (options.category) {
-//     queryParams.push(options.category);
-//     whereClauses.push(`categories.title = $${queryParams.length}`);
-//   }
-
-//   // Check if the 'minimum_rating' option is provided
-//   if (options.minimum_rating) {
-//     queryParams.push(options.minimum_rating);
-//     havingClauses.push(`average_rating >= $${queryParams.length}`);
-//   }
-
-//   // Build the WHERE part of the query if there are clauses
-//   if (whereClauses.length > 0) {
-//     queryString += ' WHERE ';
-//     queryString += whereClauses.join(' AND ');
-//   }
-
-//   // GROUP BY clause
-//   queryString += `
-//     GROUP BY pins.id`;
-
-//   // Build the HAVING part of the query if there are clauses
-//   if (havingClauses.length > 0) {
-//     queryString += ' HAVING ';
-//     queryString += havingClauses.join(' AND ');
-//   }
-
-//   // Finalize the query
-//   queryString += ';';
-
-//   // Execute the query using db.query with the queryParams
-//   return db
-//     .query(queryString, queryParams)
-//     .then((result) => {
-//       return result.rows;
-//     });
-// };
-
-// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– //
-
 
 // takes in user id
 // return user's saved pins and liked pins in json format
