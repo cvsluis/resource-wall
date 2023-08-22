@@ -4,11 +4,13 @@
       <article>
         <div class="text">
           <a href="/pins/<%= pin.id %>" class="card">
-            <p><%= pin.description %></p>
+            <p class="text-link"><%= pin.description %></p>
           </a>
         </div>
         <div class="meta-text">
-          <h3><%= pin.title %></h3>
+          <a href="/pins/<%= pin.id %>" class="title">
+            <h3><%= pin.title %></h3>
+          </a>
           <div class="icon-username">
             <i id="comment-icon" class="fa-solid fa-user"></i><h5><%= pin.owner_name %></h5>
           </div>
