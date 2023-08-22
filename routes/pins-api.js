@@ -47,8 +47,8 @@ router.post('/comments', (req, res) => {
 
   const comment = req.body;
   interactionQueries.addComment(userId, comment)
-    .then(comment => {
-      res.json({ comment });
+    .then(() => {
+      res.redirect("/pins/")
     })
     .catch(err => {
       res

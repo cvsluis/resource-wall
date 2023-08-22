@@ -3,7 +3,7 @@ const router = express.Router();
 const pinQueries = require('../db/queries/pins');
 const interactionQueries = require('../db/queries/interactions');
 
-// /pins/
+// /pins/ - this is what the actual route would be
 //View all pins
 router.get('/', (req, res) => {
   // logged in user
@@ -32,9 +32,9 @@ router.get('/new', (req, res) => {
   }
 
   interactionQueries.getAllCategories()
-  .then(categories => {
-    res.render("pins_new", { categories, userId });
-  })
+    .then(categories => {
+      res.render("pins_new", { categories, userId });
+    });
 });
 
 // /pins/:id
@@ -50,8 +50,11 @@ router.get('/:id', (req, res) => {
   // call getOnePin with pinId as argument
   pinQueries.getOnePin(pinId)
     .then(pin => {
-      // render pins_show with profile as template variable object
-      res.render("pins_show", { pin, userId });
+      interactionQueries.getComments(pinId)
+        .then(comments => {
+          // render pins_show with profile as template variable object
+          res.render("pins_show", { pin, comments, userId });
+        });
     })
     .catch(err => {
       res

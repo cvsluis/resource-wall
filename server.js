@@ -56,8 +56,7 @@ app.use('/api/pins', pinsApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  const userId = req.session.userId;
-  res.render('index', { userId });
+  res.redirect('/pins/');
 });
 
 app.listen(PORT, () => {
