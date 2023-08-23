@@ -38,7 +38,7 @@
           <a target="_blank" href="<%= pin.url %>"><img src="<%= pin.image %>"
               alt="Human hand pointing to glowing node in graph with blue background" title="Click here to view url"/></a>
         </div>
-        <p class="tag"><%= pin.category_name %></p>
+        <a href="/pins/?q=<%= pin.category_name %>" title="Click here to browse this category"><p class="tag"><%= pin.category_name %></p></a>
         <div id="heart-stars">
           <i class="fa-regular fa-heart"></i>
           <!-- Display filled heart (below) dynamically if user has liked pin: -->

@@ -11,9 +11,10 @@
   padding: 3rem;
 }
 
-#pin a {
+.close-button {
   align-self: flex-end;
 }
+
 .pin-container {
   display: flex;
   flex-direction: column;
@@ -37,13 +38,17 @@ img {
 }
 
 .tag {
-  background-color: #e5e5e5;
+  background-color: #6b63ff4c;
   height: 2rem;
   text-align: center;
   border-radius: 25px;
   border: none;
   padding: 6px 16px;
   width: max-content;
+}
+
+.tag:hover {
+  background-color: #6b63ff6f;
 }
 
 #heart-stars {
