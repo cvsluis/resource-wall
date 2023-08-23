@@ -63,7 +63,10 @@
             <article class="comment">
               <div class="comment-user">
                 <i id="comment-icon" class="fa-solid fa-user"></i>
-                <h5><%= comment.name %></h5>
+                <div class="comment-name-date">
+                  <h5><%= comment.name %></h5>
+                  <h6><%= comment.created_at %></h6>
+                </div>
               </div>
               <p><%= comment.description %></p>
             </article>

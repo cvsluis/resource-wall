@@ -74,17 +74,34 @@ img {
 .comment-user {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   gap: 10px;
   flex-basis: 35%;
 }
 
 .comment-user i {
-  margin: 0;
+  margin-top: 2px;
+  font-size: 16px;
 }
 
-.comment-user h5 {
+.comment-name-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.comment-name-date h5 {
   margin: 0;
   font-size: 16px;
+}
+
+.comment-name-date h6 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #a7a7a7;
+  margin-left: 1px;
 }
 
 .comment p {
