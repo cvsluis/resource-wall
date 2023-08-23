@@ -62,8 +62,19 @@ const addRating = (obj) => {
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const addLike = (owner_id, like) => {
+const addLike = (obj) => {
+  const queryParams = [obj.pin_id, obj.owner_id];
 
+  const queryString = `
+    INSERT INTO likes (pin_id, owner_id)
+    VALUES ($1, $2);
+  `;
+
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {
+      return result.rows;
+    });
 };
 
 // takes in an object containing all of the rating details
