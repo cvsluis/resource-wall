@@ -61,19 +61,26 @@ router.post('/:id/comments', (req, res) => {
     });
 });
 
-// /api/pins/ratings
+// /api/pins/:id/ratings (id refers to pin id)
 // Add rating
-router.post('/ratings', (req, res) => {
+router.post('/:id/ratings', (req, res) => {
+  const pinId = req.params.id;
   // check for session cookie
+  // change this to a hard-coded value (like 1 for user 1) for testing endpoint with curl command:
   const userId = req.session.userId;
   if (!userId) {
     return res.send({ error: "not logged in" });
   }
 
-  const rating = req.body;
-  interactionQueries.addRating(userId, rating)
-    .then(rating => {
-      res.json({ rating });
+  const rating = {
+    'pin_id': pinId,
+    'owner_id': userId,
+    'value': req.body.value
+  };
+
+  interactionQueries.addRating(rating)
+    .then((rating) => {
+      res.redirect(`/pins/${pinId}`);
     })
     .catch(err => {
       res
@@ -109,19 +116,25 @@ router.post('/:id/likes', (req, res) => {
     });
 });
 
-// /api/pins/likes/:id/delete (id refers to pin id)
+// /api/pins/:id/likes/delete (id refers to pin id)
 // Remove like
-router.post('/likes/:id/delete', (req, res) => {
+router.delete('/:id/likes/delete', (req, res) => {
+  const pinId = req.params.id;
   // check for session cookie
+  // change this to a hard-coded value (like 1 for user 1) for testing endpoint with curl command:
   const userId = req.session.userId;
   if (!userId) {
     return res.send({ error: "not logged in" });
   }
 
-  const like = req.body;
-  interactionQueries.removeLike(userId, like)
-    .then(like => {
-      res.json({ like });
+  const unlike = {
+    'pin_id': pinId,
+    'owner_id': userId
+  };
+
+  interactionQueries.removeLike(unlike)
+    .then((unlike) => {
+      res.redirect(`/pins/${pinId}`);
     })
     .catch(err => {
       res

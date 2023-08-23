@@ -40,8 +40,8 @@ const addComment = (comment) => {
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const addRating = (obj) => {
-  const queryParams = [obj.pin_id, obj.owner_id, obj.rating];
+const addRating = (rating) => {
+  const queryParams = [rating.pin_id, rating.owner_id, rating.value];
 
   const queryString = `
     INSERT INTO ratings (pin_id, owner_id, rating)
@@ -74,8 +74,8 @@ const addLike = (like) => {
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const removeLike = (obj) => {
-  const queryParams = [obj.pin_id, obj.owner_id];
+const removeLike = (unlike) => {
+  const queryParams = [unlike.pin_id, unlike.owner_id];
 
   const queryString = `
     DELETE FROM likes
