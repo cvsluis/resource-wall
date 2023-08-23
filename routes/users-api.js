@@ -36,9 +36,8 @@ router.post("/:id/edit", (req, res) => {
   const userProfileChange = req.body;
 
   userQueries.editUserProfile(userId, userProfileChange)
-    // use response to let user know if changes were saved or not
     .then((response) => {
-      res.send(response);
+      res.redirect(`/users/${userId}`);  // Redirect user back to their profile page.
     })
     .catch(err => {
       res
