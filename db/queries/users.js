@@ -32,7 +32,27 @@ const getUserProfile = (userID) => {
 // takes in user id and user object with any changes
 // returns confirmation message? (Changes saved successfully! or Failed to update.)
 const editUserProfile = (id, userProfileChange) => {
+  const queryParams = [
+    userProfileChange.firstName,
+    userProfileChange.about,
+    userProfileChange.username,
+    id
+  ];
 
+  const queryString = `
+    UPDATE users
+    SET 
+      name = $1,
+      about_me = $2,
+      username = $3
+    WHERE id = $4
+    RETURNING *;`;
+
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0]; 
+    });
 };
 
 module.exports = { getUserProfile, editUserProfile };
