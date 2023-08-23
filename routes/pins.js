@@ -54,7 +54,7 @@ router.get('/:id', (req, res) => {
       interactionQueries.getComments(pinId)
         .then(comments => {
           for (const comment of comments) {
-            comment.created_at = timeago.format(comments.created_at);
+            comment.created_at = timeago.format(comment.created_at);
           }
           // render pins_show with profile as template variable object
           res.render("pins_show", { pin, comments, userId, pinId });
