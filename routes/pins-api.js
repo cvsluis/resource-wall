@@ -35,9 +35,10 @@ router.post('/', (req, res) => {
     });
 });
 
-// /api/pins/comments
+// /api/pins/:id/comments
 // Add comment
-router.post('/comments', (req, res) => {
+router.post('/:id/comments', (req, res) => {
+  const pinId = req.params.id;
   // check for session cookie
   const userId = req.session.userId;
   if (!userId) {
@@ -45,9 +46,13 @@ router.post('/comments', (req, res) => {
   }
 
   const comment = req.body;
-  interactionQueries.addComment(userId, comment)
-    .then(() => {
-      res.redirect("/pins/");
+  comment.description = req.body.description;
+  comment.pin_id = pinId;
+  comment.owner_id = userId;
+
+  interactionQueries.addComment(comment)
+    .then((comment) => {;
+      res.redirect(`/pins/${pinId}`);
     })
     .catch(err => {
       res

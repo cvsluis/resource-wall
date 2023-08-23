@@ -16,7 +16,7 @@ const getAllPins = (categoryTitle) => {
 
   // Initialize the base query string that retrieves pin data along with owner names
   let queryString = `
-    SELECT pins.title, pins.description, pins.image, users.name AS owner_name,
+    SELECT pins.id, pins.title, pins.description, pins.image, users.name AS owner_name,
     categories.title AS category_title, AVG(ratings.rating) AS average_rating
     FROM pins
     JOIN users ON pins.owner_id = users.id
@@ -55,7 +55,7 @@ const getUserPins = (userId) => {
   pins.description,
   pins.image,
   users.name AS owner_name
-FROM pins 
+FROM pins
 join users on pins.owner_id = users.id
 WHERE pins.owner_id = $1
 

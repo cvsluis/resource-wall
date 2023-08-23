@@ -27,7 +27,7 @@
 <body>
   <%- include('partials/_nav.ejs') %>
     <div id="pin">
-      <a href="/" class="close-button"><i class="fa-solid fa-x"></i></a>
+      <a href="/pins/" class="close-button"><i class="fa-solid fa-x"></i></a>
       <div class="pin-container">
         <div class="text">
           <h1><%= pin.title %></h1>
@@ -63,15 +63,20 @@
             <article class="comment">
               <div class="comment-user">
                 <i id="comment-icon" class="fa-solid fa-user"></i>
-                <h5><%= comment.name %></h5>
+                <div class="comment-name-date">
+                  <h5><%= comment.name %></h5>
+                  <h6><%= comment.created_at %></h6>
+                </div>
               </div>
               <p><%= comment.description %></p>
             </article>
             <hr>
             <% } %>
-            <form method="POST" action="/api/pins/comments">
-              <input type="text" id="add-comment" name="comment" placeholder="Add a comment">
-            </form>
+            <% if (userId) { %>
+              <form method="POST" action="/api/pins/<%= pinId %>/comments" id="comment-form">
+                <input type="text" id="add-comment" name="description" placeholder="Add a comment">
+              </form>
+            <% } %>
         </div>
       </div>
     </div>
