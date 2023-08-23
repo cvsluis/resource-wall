@@ -37,8 +37,8 @@ router.post('/', (req, res) => {
 
 // /api/pins/:id/comments
 // Add comment
-router.post(':id/comments', (req, res) => {
-  const paramsId = req.params.id;
+router.post('/:id/comments', (req, res) => {
+  const pinId = req.params.id;
   // check for session cookie
   const userId = req.session.userId;
   if (!userId) {
@@ -46,13 +46,13 @@ router.post(':id/comments', (req, res) => {
   }
 
   const comment = req.body;
-  comment.pin_id = paramsId;
-  comment.owner_id = userId;
   comment.description = req.body.description;
+  comment.pin_id = pinId;
+  comment.owner_id = userId;
 
   interactionQueries.addComment(comment)
-    .then((comment) => {
-      res.json({comment});
+    .then((comment) => {;
+      res.redirect(`/pins/${pinId}`);
     })
     .catch(err => {
       res
