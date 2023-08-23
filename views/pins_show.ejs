@@ -40,7 +40,7 @@
         </div>
         <a href="/pins/?q=<%= pin.category_name %>" title="Click here to browse this category"><p class="tag"><%= pin.category_name %></p></a>
         <div id="heart-stars">
-          <i class="fa-regular fa-heart"></i>
+          <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
           <!-- Display filled heart (below) dynamically if user has liked pin: -->
           <!-- <a href=""><i class="fa-solid fa-heart"></i></a> -->
           <!-- <div class="stars empty">
