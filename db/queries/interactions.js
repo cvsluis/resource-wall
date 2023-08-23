@@ -79,8 +79,19 @@ const addLike = (obj) => {
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const removeLike = (owner_id, like) => {
+const removeLike = (obj) => {
+  const queryParams = [obj.pin_id, obj.owner_id];
 
+  const queryString = `
+    DELETE FROM likes
+    WHERE pin_id = $1 AND owner_id = $2;
+  `;
+
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {
+      return result.rows;
+    });
 };
 
 
