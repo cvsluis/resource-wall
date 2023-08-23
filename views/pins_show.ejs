@@ -69,9 +69,11 @@
             </article>
             <hr>
             <% } %>
-            <form method="POST" action="/api/pins/<%= pinId %>/comments" id="comment-form">
-              <input type="text" id="add-comment" name="description" placeholder="Add a comment">
-            </form>
+            <% if (userId) { %>
+              <form method="POST" action="/api/pins/<%= pinId %>/comments" id="comment-form">
+                <input type="text" id="add-comment" name="description" placeholder="Add a comment">
+              </form>
+            <% } %>
         </div>
       </div>
     </div>
