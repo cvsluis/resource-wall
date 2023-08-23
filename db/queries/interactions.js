@@ -18,7 +18,8 @@ const getComments = (pinId) => {
   SELECT *, users.name as name
   FROM comments
   JOIN users on users.id = comments.owner_id
-  WHERE pin_id = $1`;
+  WHERE pin_id = $1
+  ORDER BY comments.created_at;`;
 
   return db.query(queryString, [pinId]).then(data => data.rows);
 };
