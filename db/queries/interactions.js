@@ -33,6 +33,8 @@ const addComment = (obj) => {
     INSERT INTO comments (pin_id, owner_id, description)
     VALUES ($1, $2, $3);
   `;
+  // It's possible that we'll need to add RETURNING * to this query string
+  // I think this will be easier to test on the front-end
 
   return db
     .query(queryString, queryParams)
@@ -43,8 +45,19 @@ const addComment = (obj) => {
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const addRating = (owner_id, rating) => {
+const addRating = (obj) => {
+  const queryParams = [obj.pin_id, obj.owner_id, obj.rating];
 
+  const queryString = `
+    INSERT INTO ratings (pin_id, owner_id, rating)
+    VALUES ($1, $2, $3);
+  `;
+
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {
+      return result.rows;
+    });
 };
 
 // takes in an object containing all of the rating details
