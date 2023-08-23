@@ -28,11 +28,14 @@ const getComments = (pinId) => {
 // returns result.rows
 const addComment = (comment) => {
   const queryString = `
-  INSERT INTO comments (pin_id, owner_id, description)
-  VALUES ($1, $2, $3)
-  RETURNING *;`;
+    INSERT INTO comments (pin_id, owner_id, description)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+  `;
 
-  return db.query(queryString, [comment.pin_id, comment.owner_id, comment.description]).then(data => data.rows);
+  return db
+    .query(queryString, [comment.pin_id, comment.owner_id, comment.description])
+    .then(data => data.rows);
 };
 
 // takes in an object containing all of the rating details
@@ -54,8 +57,8 @@ const addRating = (obj) => {
 
 // takes in an object containing all of the rating details
 // returns result.rows
-const addLike = (obj) => {
-  const queryParams = [obj.pin_id, obj.owner_id];
+const addLike = (like) => {
+  const queryParams = [like.pin_id, like.owner_id];
 
   const queryString = `
     INSERT INTO likes (pin_id, owner_id)
