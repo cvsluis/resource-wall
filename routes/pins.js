@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pinQueries = require('../db/queries/pins');
 const interactionQueries = require('../db/queries/interactions');
+const timeago = require('timeago.js');
 
 // /pins/ - this is what the actual route would be
 //View all pins
@@ -52,6 +53,9 @@ router.get('/:id', (req, res) => {
     .then(pin => {
       interactionQueries.getComments(pinId)
         .then(comments => {
+          for (const comment of comments) {
+            comment.created_at = timeago.format(comments.created_at);
+          }
           // render pins_show with profile as template variable object
           res.render("pins_show", { pin, comments, userId, pinId });
         });
