@@ -134,7 +134,8 @@ router.delete('/:id/likes/delete', (req, res) => {
 
   interactionQueries.removeLike(unlike)
     .then((unlike) => {
-      res.redirect(`/pins/${pinId}`);
+      // Replaced redirect with JSON response
+      res.json({ success: true, message: "Like removed successfully!" });
     })
     .catch(err => {
       res
