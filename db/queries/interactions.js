@@ -26,21 +26,13 @@ const getComments = (pinId) => {
 
 // takes in an object containing all of the comment details
 // returns result.rows
-const addComment = (obj) => {
-  const queryParams = [obj.pin_id, obj.owner_id, obj.comment];
-
+const addComment = (comment) => {
   const queryString = `
-    INSERT INTO comments (pin_id, owner_id, description)
-    VALUES ($1, $2, $3);
-  `;
-  // It's possible that we'll need to add RETURNING * to this query string
-  // I think this will be easier to test on the front-end
+  INSERT INTO comments (pin_id, owner_id, description)
+  VALUES ($1, $2, $3)
+  RETURNING *;`;
 
-  return db
-    .query(queryString, queryParams)
-    .then((result) => {
-      return result.rows;
-    });
+  return db.query(queryString, [comment.pin_id, comment.owner_id, comment.description]).then(data => data.rows);
 };
 
 // takes in an object containing all of the rating details
