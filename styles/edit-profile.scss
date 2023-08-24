@@ -1,83 +1,90 @@
 
 /* Container styles */
 .container {
-  position: relative;
-  background-color: #d9d9d9;
-  padding: 3rem;
-  border-radius: 8px;
-  text-align: center;
   display: flex;
-  flex-direction: column; 
-  align-items: center;
-  border-radius: 10px;
-  height: fit-content;
-  max-width: 50%;
-  color: #5f636a;
+  width: 50%;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-wrap: wrap;
   margin-top: 95px;
-}
-/* 'information you add here' text */
-.container p {
-  width: 80%;
-}
-
-.container h2,
-.container p {
-  margin: 10px auto;
+  margin-bottom: 25px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #333;
+  border-radius: 25px;
+  padding: 3rem;
 }
 
-.form-field label {
-  width: 80%;
-  display: block;
-  text-align: left;
-  margin-bottom: 5px;
+.container * {
+  margin: 0;
 }
 
-/* design to have first and last name on same 
-.full-name-container {
+.container-content {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.full-name {
-  width: 49%; 
-}
-*/
-
-.form-field input[type="text"] {
+  flex-direction: column;
+  gap: 1.5rem;
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-sizing: border-box;
+}
+.container-content h1 {
+  font-size: 2em;
+}
+
+.edit-profile-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#firstName {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #f6f6f6;
+  color: black;
+}
+
+#about {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #f6f6f6;
+  color: black;
+  resize: none;
+}
+
+#username {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #f6f6f6;
+  color: black;
 }
 
 #save-button {
-  background-color: #6c63ff;
+  background-color: #6C63FF;
   color: #fff;
+  height: 2rem;
+  width: 8rem;
+  border-radius: 25px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  width: 50%;
-  margin-top: 20px;
+  margin: 0 auto;
 }
 
-/* Icons */
-.fa-xmark {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+#save-button:hover {
   cursor: pointer;
-  color: #5f636a;
-  font-size: 20px;
-}
-
-.form-field textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 15px; 
-  box-sizing: border-box;
-  resize: none;
+  background-color: #564ef0;
 }
