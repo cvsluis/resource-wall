@@ -7,7 +7,17 @@
   <div class="search">
     <form method="GET" action="/pins/">
       <!-- Search bar will also include magnifying glass icon -->
-      <input type="search" class="fontAwesome" id="query" name="q" placeholder="&#xF002;" value="">
+      <div class="search-bar">
+        <input type="search" class="fontAwesome" id="query" name="q" placeholder="&#xF002;" value="" autocomplete="off">
+      </div>
+      <div id="search-dropdown">
+        <div class="search-categories">
+          <% for (const category of categories) { %>
+            <input type="radio" value="<%= category.id %>" name="category" id="<%= category.id %>" class="category-button" data-category="<%= category.title %>" required>
+            <label for="<%= category.id %>"><%= category.title %></label>
+          <% } %>
+        </div>
+      </div>
     </form>
   </div>
   <div id="right-nav">
