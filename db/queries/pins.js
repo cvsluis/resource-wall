@@ -16,8 +16,7 @@ const getAllPins = (categoryTitle) => {
 
   // Initialize the base query string that retrieves pin data along with owner names
   let queryString = `
-    SELECT pins.id, pins.title, pins.description, pins.image, users.name AS owner_name,
-    categories.title AS category_title, AVG(ratings.rating) AS average_rating
+    SELECT pins.id, pins.title, pins.description, pins.image, users.name AS owner_name, users.id AS owner_id, categories.title AS category_title, AVG(ratings.rating) AS average_rating
     FROM pins
     JOIN users ON pins.owner_id = users.id
     LEFT JOIN categories ON pins.category_id = categories.id
@@ -32,7 +31,7 @@ const getAllPins = (categoryTitle) => {
 
   // Grouping the results by the pin id, owner name, and category title
   queryString += `
-    GROUP BY pins.id, users.name, categories.title
+    GROUP BY pins.id, users.name, users.id, categories.title
     ORDER BY pins.created_at DESC;
   `;
 
@@ -54,9 +53,10 @@ const getUserPins = (userId) => {
   pins.title,
   pins.description,
   pins.image,
-  users.name AS owner_name
+  users.name AS owner_name,
+  users.id AS owner_id
 FROM pins
-join users on pins.owner_id = users.id
+JOIN users on pins.owner_id = users.id
 WHERE pins.owner_id = $1
 
 UNION
@@ -67,10 +67,11 @@ SELECT
   pins.title,
   pins.description,
   pins.image,
-  users.name AS owner_name
+  users.name AS owner_name,
+  users.id AS owner_id
 FROM pins
 JOIN likes ON pins.id = likes.pin_id
-join users on pins.owner_id = users.id
+JOIN users on pins.owner_id = users.id
 WHERE likes.owner_id = $1
   `;
 

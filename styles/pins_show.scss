@@ -110,6 +110,10 @@ img {
   margin-left: 1px;
 }
 
+.username:hover {
+  text-decoration: underline;
+}
+
 .comment p {
   flex-basis: 65%;
 }

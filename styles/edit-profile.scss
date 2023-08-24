@@ -7,7 +7,7 @@
   border-radius: 8px;
   text-align: center;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   border-radius: 10px;
   height: fit-content;
@@ -32,7 +32,18 @@
   margin-bottom: 5px;
 }
 
-/* design to have first and last name on same 
+#why-pronouns {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#why-pronouns:hover {
+  color: #6c63ff;
+}
+
+/* design to have first and last name on same
 .full-name-container {
   display: flex;
   justify-content: space-between;
@@ -40,7 +51,7 @@
 }
 
 .full-name {
-  width: 49%; 
+  width: 49%;
 }
 */
 
@@ -77,7 +88,7 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 15px; 
+  border-radius: 15px;
   box-sizing: border-box;
   resize: none;
 }
