@@ -89,21 +89,29 @@ WHERE likes.owner_id = $1
 // takes in pin id
 // returns all information pertaining to that pin
 // also comments, likes and ratings
-const getOnePin = (pinId) => {
+const getOnePin = (pinId, userId) => {
   const queryString = `
-  SELECT *, pins.title, avg_rating.average_rating, categories.title as category_name
+  SELECT 
+    pins.*, 
+    avg_rating.average_rating, 
+    categories.title as category_name,
+    CASE 
+        WHEN likes.id IS NULL THEN FALSE 
+        ELSE TRUE 
+    END AS user_has_liked
   FROM pins
   LEFT JOIN (
     SELECT pin_id, AVG(rating) AS average_rating
     FROM ratings
     GROUP BY pin_id
   ) AS avg_rating ON pins.id = avg_rating.pin_id
+  LEFT JOIN likes ON pins.id = likes.pin_id AND likes.owner_id = $2
   JOIN categories ON categories.id = pins.category_id
   WHERE pins.id = $1;
 `;
 
   return db
-    .query(queryString, [pinId])
+    .query(queryString, [pinId, userId])
     .then((result) => {
       return result.rows[0];
     });

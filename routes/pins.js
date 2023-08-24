@@ -49,7 +49,7 @@ router.get('/:id', (req, res) => {
   }
 
   // call getOnePin with pinId as argument
-  pinQueries.getOnePin(pinId)
+  pinQueries.getOnePin(pinId, userId)
     .then(pin => {
       interactionQueries.getComments(pinId)
         .then(comments => {
