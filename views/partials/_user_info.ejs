@@ -1,22 +1,13 @@
-<div class="user-info">
-    <h2 class="user-name"><%= profile.name %></h2>
-    <div class="user-details">
-        <span class="user-username">
-            @<%= profile.username %>
-        </span>
-        <!-- need to add pronouns to  user schema to display this.
-        <span class="user-pronouns">
-            <%= profile.pronouns %>
-        </span>
-        -->
+<div class="user-info-container">
+  <div class="user-info">
+    <h2><%= profile.name %></h2>
+    <h4>@<%= profile.username %></h4>
+    <h3><%= pins.length %> Ideas Pinned</h3>
+    <p><%= profile.about_me %></p>
+  </div>
+  <% if (userId == profile.id) { %>
+    <div>
+      <a href="/users/<%= profile.id %>/edit"><p class="edit-button">Edit Profile</p></a>
     </div>
-    <p class="user-pins">
-        <%= pins.length %> Ideas Pinned
-    </p>
-    <p class="user-about">
-        <%= profile.about_me %>
-    </p>
-    <% if (userId == profile.id) { %> 
-        <a href="/users/<%= profile.id %>/edit" class="edit-profile-btn">Edit Profile</a>
     <% } %>
 </div>
