@@ -16,11 +16,12 @@ const getAllPins = (searchString) => {
 
   // Initialize the base query string that retrieves pin data along with owner names
   let queryString = `
-    SELECT pins.id, pins.image, pins.title, pins.description, pins.image, users.name AS owner_name, users.id AS owner_id, categories.title AS category_title, AVG(ratings.rating) AS average_rating
+    SELECT pins.id, pins.title, pins.description, users.name AS owner_name, users.id AS owner_id, categories.title AS category_title, AVG(ratings.rating) AS average_rating, images.url AS image_url, images.alt AS image_alt
     FROM pins
     JOIN users ON pins.owner_id = users.id
     LEFT JOIN categories ON pins.category_id = categories.id
     LEFT JOIN ratings ON pins.id = ratings.pin_id
+    LEFT JOIN images ON pins.image_id = images.id
   `;
 
   // Check if searchString exists and add a WHERE clause to filter by it
@@ -31,7 +32,7 @@ const getAllPins = (searchString) => {
 
   // Grouping the results by the pin id, owner name, and category title
   queryString += `
-    GROUP BY pins.id, users.name, users.id, categories.title
+    GROUP BY pins.id, users.name, users.id, categories.title, images.url, images.alt
     ORDER BY pins.created_at DESC;
   `;
 
@@ -52,11 +53,13 @@ const getUserPins = (userId) => {
   pins.url,
   pins.title,
   pins.description,
-  pins.image,
+  images.url AS image_url,
+  images.alt AS image_alt,
   users.name AS owner_name,
   users.id AS owner_id
 FROM pins
 JOIN users on pins.owner_id = users.id
+JOIN images on pins.image_id = images.id
 WHERE pins.owner_id = $1
 
 UNION
@@ -66,12 +69,14 @@ SELECT
   pins.url,
   pins.title,
   pins.description,
-  pins.image,
+  images.url AS image_url,
+  images.alt AS image_alt,
   users.name AS owner_name,
   users.id AS owner_id
 FROM pins
 JOIN likes ON pins.id = likes.pin_id
 JOIN users on pins.owner_id = users.id
+JOIN images on pins.image_id = images.id
 WHERE likes.owner_id = $1
   `;
 
@@ -92,13 +97,15 @@ WHERE likes.owner_id = $1
 // also comments, likes and ratings
 const getOnePin = (pinId, userId) => {
   const queryString = `
-  SELECT 
-    pins.*, 
-    avg_rating.average_rating, 
+  SELECT
+    pins.*,
+    images.url AS image_url,
+    images.alt AS image_alt,
+    avg_rating.average_rating,
     categories.title as category_name,
-    CASE 
-        WHEN likes.id IS NULL THEN FALSE 
-        ELSE TRUE 
+    CASE
+        WHEN likes.id IS NULL THEN FALSE
+        ELSE TRUE
     END AS user_has_liked
   FROM pins
   LEFT JOIN (
@@ -107,6 +114,7 @@ const getOnePin = (pinId, userId) => {
     GROUP BY pin_id
   ) AS avg_rating ON pins.id = avg_rating.pin_id
   LEFT JOIN likes ON pins.id = likes.pin_id AND likes.owner_id = $2
+  JOIN images on pins.image_id = images.id
   JOIN categories ON categories.id = pins.category_id
   WHERE pins.id = $1;
 `;
@@ -130,8 +138,8 @@ const addOnePin = (pin) => {
     pin.description,
   ];
   const queryString = `
-  INSERT INTO pins (owner_id, category_id, url, title, description)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO pins (owner_id, category_id, url, title, description, image_id)
+  VALUES ($1, $2, $3, $4, $5, $2)
   RETURNING *;`;
 
   return db
