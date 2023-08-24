@@ -92,13 +92,13 @@ WHERE likes.owner_id = $1
 // also comments, likes and ratings
 const getOnePin = (pinId, userId) => {
   const queryString = `
-  SELECT 
-    pins.*, 
-    avg_rating.average_rating, 
+  SELECT
+    pins.*,
+    avg_rating.average_rating,
     categories.title as category_name,
-    CASE 
-        WHEN likes.id IS NULL THEN FALSE 
-        ELSE TRUE 
+    CASE
+        WHEN likes.id IS NULL THEN FALSE
+        ELSE TRUE
     END AS user_has_liked
   FROM pins
   LEFT JOIN (
@@ -130,8 +130,8 @@ const addOnePin = (pin) => {
     pin.description,
   ];
   const queryString = `
-  INSERT INTO pins (owner_id, category_id, url, title, description)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO pins (owner_id, category_id, url, title, description, image_id)
+  VALUES ($1, $2, $3, $4, $5, $2)
   RETURNING *;`;
 
   return db
