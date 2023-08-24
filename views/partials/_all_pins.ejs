@@ -12,7 +12,10 @@
             <h3><%= pin.title %></h3>
           </a>
           <div class="icon-username">
-            <i id="comment-icon" class="fa-solid fa-user"></i><h5><%= pin.owner_name %></h5>
+            <i id="comment-icon" class="fa-solid fa-user"></i>
+            <a href="/users/<%= pin.owner_id %>" class="card">
+              <h5><%= pin.owner_name %></h5>
+            </a>
           </div>
         </div>
       </article>
