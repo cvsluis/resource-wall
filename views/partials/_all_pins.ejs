@@ -6,16 +6,16 @@
           <!-- Displaying the pin's image -->
           <div class="image-container">
             <a href="/pins/<%= pin.id %>">
-              <img src="<%= pin.image %>" alt="<%= pin.title %>">
+              <img src="<%= pin.image_url %>" alt="<%= pin.image_alt %>">
             </a>
           </div>
-          
+
           <!-- Displaying the pin's title -->
           <a href="/pins/<%= pin.id %>" class="title">
             <h3><%= pin.title %></h3>
           </a>
         </div>
-        
+
         <div class="meta-text">
           <div class="icon-username">
             <i id="comment-icon" class="fa-solid fa-user"></i>
