@@ -1,0 +1,28 @@
+.landing-container {
+  width: 80%;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.landing-container img {
+  width: 500px;
+}
+
+.call-to-action {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.call-to-action-btn {
+  background-color: #6C63FF;
+  color: #fff;
+  height: 2rem;
+  border-radius: 25px;
+  border: none;
+  padding: 8px 16px;
+}
