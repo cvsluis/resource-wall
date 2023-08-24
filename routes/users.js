@@ -9,6 +9,7 @@ const express = require('express');
 const router = express.Router();
 const userQueries = require('../db/queries/users');
 const pinQueries = require('../db/queries/pins');
+const interactionQueries = require('../db/queries/interactions');
 
 // will delete later
 // View all users
@@ -32,9 +33,12 @@ router.get('/:id', (req, res) => {
       // call getUserPins with paramsUserId as argument
       pinQueries.getUserPins(paramsUserId)
         .then(pins => {
-          // render pins_user with profile for user information,
-          // pins for users saved and liked pins, and userId to show/hide edit profile button
-          res.render("pins_user", { profile, pins, userId });
+          interactionQueries.getAllCategories()
+            .then(categories => {
+              // render pins_user with profile for user information,
+              // pins for users saved and liked pins, and userId to show/hide edit profile button
+              res.render("pins_user", { profile, pins, userId, categories });
+            });
         });
     })
     .catch(err => {
@@ -57,9 +61,12 @@ router.get('/:id/edit', (req, res) => {
   }
   // getUserProfile with cookie variable as userId
   userQueries.getUserProfile(userId)
-    .then((profile) => {
-      // render user_profile with profile for form values, and userId for nav
-      res.render('user_profile', { profile, userId });
+    .then(profile => {
+      interactionQueries.getAllCategories()
+        .then(categories => {
+          // render user_profile with profile for form values, and userId for nav
+          res.render('user_profile', { profile, userId, categories });
+        });
     });
 });
 
