@@ -13,8 +13,11 @@ router.get('/', (req, res) => {
   // do we want a limit?
   pinQueries.getAllPins(req.query.q)
     .then(pins => {
-      // render index with pins and userId
-      res.render("index", { pins, userId });
+      interactionQueries.getAllCategories()
+        .then(categories => {
+          // render index with pins and userId
+          res.render("index", { pins, userId, categories });
+        });
     })
     .catch(err => {
       res
@@ -49,15 +52,19 @@ router.get('/:id', (req, res) => {
   }
 
   // call getOnePin with pinId as argument
-  pinQueries.getOnePin(pinId)
+  pinQueries.getOnePin(pinId, userId)
     .then(pin => {
       interactionQueries.getComments(pinId)
         .then(comments => {
-          for (const comment of comments) {
-            comment.created_at = timeago.format(comment.created_at);
-          }
-          // render pins_show with profile as template variable object
-          res.render("pins_show", { pin, comments, userId, pinId });
+          interactionQueries.getAllCategories()
+            .then(categories => {
+              // update created_at time to timeago format
+              for (const comment of comments) {
+                comment.created_at = timeago.format(comment.created_at);
+              }
+              // render pins_show with profile as template variable object
+              res.render("pins_show", { pin, comments, userId, pinId, categories });
+            });
         });
     })
     .catch(err => {
