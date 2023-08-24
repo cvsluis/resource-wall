@@ -75,7 +75,7 @@ router.post('/:id/ratings', (req, res) => {
   const rating = {
     'pin_id': pinId,
     'owner_id': userId,
-    'value': req.body.value
+    'value': req.body.rating
   };
 
   interactionQueries.addRating(rating)

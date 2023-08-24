@@ -122,6 +122,20 @@ h5 {
   margin: 0;
 }
 
+i.fa-regular:hover {
+  color: #6b63ff4c;
+  }
+
+input[type="radio"] {
+  position: fixed;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+input[type="radio"]:checked + label {
+  color: #6b63ff4c;
+}
+
 #add-comment{
   width: 100%;
   padding: 12px;
