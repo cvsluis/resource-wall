@@ -18,4 +18,4 @@ Add     POST  /api/pins/:pinId/comments                 // Add comment
 Add     POST  /api/pins/:pinId/ratings                  // Add rating
 
 Add     POST  /api/pins/:pinId/likes                    // Add like
-Delete  POST  /api/pins/:pinId/likes/:likeId/delete     // Remove like
+Delete  POST  /api/pins/:pinId/likes/delete             // Remove like
