@@ -10,7 +10,7 @@ const getUsers = () => {
 // model after LightBnB getAllProperties
 // check for categories, ratings
 // potential second parameter
-const getAllPins = (categoryTitle) => {
+const getAllPins = (searchString) => {
   // Initialize an array to store the query parameters
   const queryParams = [];
 
@@ -24,10 +24,10 @@ const getAllPins = (categoryTitle) => {
     LEFT JOIN ratings ON pins.id = ratings.pin_id
   `;
 
-  // Check if categoryTitle exists and add a WHERE clause to filter by it
-  if (categoryTitle) {
-    queryParams.push(`%${categoryTitle}%`);
-    queryString += `WHERE categories.title ILIKE $${queryParams.length} `;
+  // Check if searchString exists and add a WHERE clause to filter by it
+  if (searchString) {
+    queryParams.push(`%${searchString}%`);
+    queryString += `WHERE categories.title ILIKE $${queryParams.length} OR pins.title ILIKE $${queryParams.length} OR pins.description ILIKE $${queryParams.length} `;
   }
 
   // Grouping the results by the pin id, owner name, and category title
