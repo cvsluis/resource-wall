@@ -28,21 +28,18 @@
               <label for="firstName">Name</label>
               <input type="text" id="firstName" name="firstName" value='<%= profile.name %>' required>
             </div>
-
+            <div class="form-inputs">
+              <label for="pronouns">Pronouns</label>
+              <h6 id="why-pronouns"><a href="https://lgbt.foundation/pronouns#:~:text=It%E2%80%99s%20good%20practice,binary%20community%20members." target="_blank">Why pronouns?</a></h6>
+              <input type="text" id="pronouns" name="pronouns" value="<%= profile.pronouns %>">
+            </div>
+            <div class="form-inputs">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" value="<%= profile.username %>" required>
+            </div>
             <div class="form-inputs">
                 <label for="about">About</label>
                 <textarea id="about" name="about" rows="4" cols="50" required><%= profile.about_me %></textarea>
-            </div>
-            <div class="form-field">
-                <label for="pronouns">Pronouns</label>
-                <h6 id="why-pronouns"><a href="https://lgbt.foundation/pronouns#:~:text=It%E2%80%99s%20good%20practice,binary%20community%20members." target="_blank">Why pronouns?</a></h6>
-                <input type="text" id="pronouns" name="pronouns" value="<%= profile.pronouns %>">
-            </div>
-            -->
-
-            <div class="form-field">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="<%= profile.username %>" required>
             </div>
             <button type="submit" id="save-button">Save</button>
         </form>
