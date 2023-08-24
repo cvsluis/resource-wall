@@ -16,6 +16,8 @@
             <input type="radio" value="<%= category.id %>" name="category" id="<%= category.id %>" class="category-button" data-category="<%= category.title %>" required>
             <label for="<%= category.id %>"><%= category.title %></label>
           <% } %>
+          <!-- Add extra default radio button for search bar to submit without category being clicked -->
+          <input type="radio" name="category" checked="true" value="none"></input>
         </div>
       </div>
     </form>
