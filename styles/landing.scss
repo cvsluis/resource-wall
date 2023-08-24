@@ -1,15 +1,14 @@
 .landing-container {
-  width: 80%;
   height: 90vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 70px;
 }
 
 .landing-container img {
-  width: 500px;
+  width: 50%
 }
 
 .call-to-action {
@@ -18,11 +17,24 @@
   gap: 12px;
 }
 
+.call-to-action > * {
+  margin: 0;
+}
+
 .call-to-action-btn {
   background-color: #6C63FF;
   color: #fff;
-  height: 2rem;
-  border-radius: 25px;
+  min-height: 2.5rem;
   border: none;
-  padding: 8px 16px;
+  border-radius: 25px;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+
+.call-to-action-btn:hover {
+  background-color: #564ef0;
+}
+
+a {
+  text-decoration: none;
 }
