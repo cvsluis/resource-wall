@@ -4,11 +4,9 @@
         <span class="user-username">
             @<%= profile.username %>
         </span>
-        <!-- need to add pronouns to  user schema to display this.
         <span class="user-pronouns">
             <%= profile.pronouns %>
         </span>
-        -->
     </div>
     <p class="user-pins">
         <%= pins.length %> Ideas Pinned
@@ -16,7 +14,7 @@
     <p class="user-about">
         <%= profile.about_me %>
     </p>
-    <% if (userId == profile.id) { %> 
+    <% if (userId == profile.id) { %>
         <a href="/users/<%= profile.id %>/edit" class="edit-profile-btn">Edit Profile</a>
     <% } %>
 </div>
