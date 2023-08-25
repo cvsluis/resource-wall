@@ -42,7 +42,7 @@ const addComment = (comment) => {
 // returns result.rows
 const addRating = (rating) => {
   const queryParams = [rating.pin_id, rating.owner_id, rating.value];
-
+  console.log(rating);
   const queryString = `
     INSERT INTO ratings (pin_id, owner_id, rating)
     VALUES ($1, $2, $3);

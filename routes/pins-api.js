@@ -72,13 +72,7 @@ router.post('/:id/ratings', (req, res) => {
     return res.send({ error: "not logged in" });
   }
 
-  const rating = {
-    'pin_id': pinId,
-    'owner_id': userId,
-    'value': req.body.rating
-  };
-
-  interactionQueries.addRating(rating)
+  interactionQueries.addRating(req.body)
     .then((rating) => {
       res.redirect(`/pins/${pinId}`);
     })

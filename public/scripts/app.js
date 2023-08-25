@@ -52,9 +52,10 @@ Linkfolio.toggleLike = function() {
 };
 
 Linkfolio.adjustRating = function() {
+  console.log("Checking adjustRating");
   // url: /api/pins/:id/ratings
-  $('.star-1').on('click', () => {
-
+  $('#star-1').on('click', function() {
+    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -90,10 +91,10 @@ Linkfolio.adjustRating = function() {
         console.log('Error while toggling rating: ', error);
       }
     });
-  }
+  });
 
-  $('.star-2').on('click', () => {
-
+  $('#star-2').on('click', function() {
+    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -110,7 +111,7 @@ Linkfolio.adjustRating = function() {
       data: {
         pin_id: pinId,
         owner_id: 1,
-        value: 1
+        value: 2
       },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
@@ -129,10 +130,10 @@ Linkfolio.adjustRating = function() {
         console.log('Error while toggling rating: ', error);
       }
     });
-  }
+  });
 
-  $('.star-3').on('click', () => {
-
+  $('#star-3').on('click', function() {
+    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -149,7 +150,7 @@ Linkfolio.adjustRating = function() {
       data: {
         pin_id: pinId,
         owner_id: 1,
-        value: 1
+        value: 3
       },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
@@ -168,10 +169,10 @@ Linkfolio.adjustRating = function() {
         console.log('Error while toggling rating: ', error);
       }
     });
-  }
+  });
 
-  $('.star-4').on('click', () => {
-
+  $('#star-4').on('click', function() {
+    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -188,7 +189,7 @@ Linkfolio.adjustRating = function() {
       data: {
         pin_id: pinId,
         owner_id: 1,
-        value: 1
+        value: 4
       },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
@@ -207,10 +208,10 @@ Linkfolio.adjustRating = function() {
         console.log('Error while toggling rating: ', error);
       }
     });
-  }
+  });
 
-  $('.star-5').on('click', () => {
-
+  $('#star-5').on('click', function() {
+    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -227,7 +228,7 @@ Linkfolio.adjustRating = function() {
       data: {
         pin_id: pinId,
         owner_id: 1,
-        value: 1
+        value: 5
       },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
@@ -246,7 +247,7 @@ Linkfolio.adjustRating = function() {
         console.log('Error while toggling rating: ', error);
       }
     });
-  }
+  });
 
   // $ratingForm.on("submit", function(event) {
   //   event.preventDefault(); // event.preventDefault prevents the default
