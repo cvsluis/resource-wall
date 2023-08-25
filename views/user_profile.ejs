@@ -13,49 +13,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <% 
-    // Temporarily use a hardcoded userId for testing
-    let userId = 1;
-
-    // TODO: Uncomment and implement the logic below to fetch userId from database
-%>
     <%- include('partials/_nav.ejs') %>
     <div class="container">
-        <h2>Edit Profile</h2>
-        <a href="/api/users/<%= userId %>" class="back-button">
-            <i class="fa-solid fa-xmark"></i>
-        </a>
-        <p>Information you add here is visible to anyone who can view your profile.</p>
+      <a href="/users/<%= userId %>" class="back-button">
+        <i class="fa-solid fa-xmark"></i>
+      </a>
+      <div class="container-content">
+        <div class="edit-profile-title">
+          <h1>Edit Profile</h1>
+          <p>Information you add here is visible to anyone who can view your profile.</p>
+        </div>
         <form action="/api/users/<%= userId %>/edit" method="POST">
-            <div class="form-field full-name-container"> 
-                <div class="full-name">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName">
-                </div>
-
-                <div class="full-name">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName">
-                </div>
+            <div class="form-inputs">
+              <label for="firstName">Name</label>
+              <input type="text" id="firstName" name="firstName" value='<%= profile.name %>' required>
             </div>
-
-            <div class="form-field about-input">
+            <div class="form-inputs">
+              <label for="pronouns">Pronouns</label>
+              <h6 id="why-pronouns"><a href="https://lgbt.foundation/pronouns#:~:text=It%E2%80%99s%20good%20practice,binary%20community%20members." target="_blank">Why pronouns?</a></h6>
+              <input type="text" id="pronouns" name="pronouns" value="<%= profile.pronouns %>">
+            </div>
+            <div class="form-inputs">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" value="<%= profile.username %>" required>
+            </div>
+            <div class="form-inputs">
                 <label for="about">About</label>
-                <textarea id="about" name="about" rows="4" cols="50"></textarea> 
+                <textarea id="about" name="about" rows="4" cols="50" required><%= profile.about_me %></textarea>
             </div>
-
-            <div class="form-field">
-                <label for="pronouns">Pronouns</label>
-                <input type="text" id="pronouns" name="pronouns">
-            </div>
-
-            <div class="form-field">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
-            </div>
-
             <button type="submit" id="save-button">Save</button>
         </form>
+      </div>
+
     </div>
 </body>
 </html>

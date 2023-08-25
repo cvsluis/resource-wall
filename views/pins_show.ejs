@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Linkfolio</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="/styles/pins_show.css" />
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -24,51 +26,75 @@
 
 <body>
   <%- include('partials/_nav.ejs') %>
-  <div id="pin">
-    <div id="text">
-      <h1>Pin Title</h1>
-      <!-- Note to incorporate back arrow instead of "x" button -->
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas quis ipsum suspendisse ultrices gravida dictum fusce. Tortor posuere ac ut consequat semper. Enim facilisis gravida neque convallis a. Elementum pulvinar etiam non quam lacus.
-      </p>
-    </div>
-    <div id="pin-img">
-      <a target="_blank" href="https://freecodecamp.org/"><img src="https://www.careergirls.org/wp-content/uploads/2015/06/Computer_Programmer1920X10180.jpg" alt="Computer screen with code" /></a>
-    </div>
-    <div id="tags">
-      <div id="tag">
-        <span>JavaScript</span>
-      </div>
-    </div>
-    <div id="heart-stars">
-      <i class="fa-regular fa-heart"></i>
-      <!-- Display filled heart (below) dynamically if user has liked pin: -->
-      <!-- <a href=""><i class="fa-solid fa-heart"></i></a> -->
-      <!-- <div class="stars empty">
-        <a href=""><i class="fa-regular fa-star"></i></a>
-        <a href=""><i class="fa-regular fa-star"></i></a>
-        <a href=""><i class="fa-regular fa-star"></i></a>
-        <a href=""><i class="fa-regular fa-star"></i></a>
-        <a href=""><i class="fa-regular fa-star"></i></a>
-      </div> -->
-      <div class="stars full">
-        <a href=""><i class="fa-solid fa-star"></i></a>
-        <a href=""><i class="fa-solid fa-star"></i></a>
-        <a href=""><i class="fa-solid fa-star"></i></a>
-        <a href=""><i class="fa-solid fa-star"></i></a>
-        <a href=""><i class="fa-solid fa-star"></i></a>
-      </div>
-    </div>
-    <div id="comments">
-      <article>
-        <i id="comment-icon" class="fa-solid fa-user"></i>
-        <div id="user-timestamp">
-          <h5>username</h5>
-          <h6>1d</h6>
+    <div id="pin">
+      <a href="/pins/" class="close-button"><i class="fa-solid fa-x"></i></a>
+      <div class="pin-container">
+        <div class="text">
+          <h1><%= pin.title %></h1>
+          <p><%= pin.description %></p>
         </div>
-        <p>Wow, this is awesome! FreeCodeCamp always makes quality content.</p>
-      </article>
+        <div id="single-pin-img">
+          <a target="_blank" href="<%= pin.url %>"><img src="<%= pin.image_url %>"
+              alt="<%= pin.image_alt %>" title="Click here to view url"/></a>
+        </div>
+        <a href="/pins/?q=<%= pin.category_name %>" title="Click here to browse this category"><p class="tag"><%= pin.category_name %></p></a>
+        <div id="heart-stars">
+          <!-- Check if the current user is NOT the owner of the pin -->
+          <% if (userId != pin.owner_id) { %>
+
+              <!-- If current user has liked the pin -->
+              <% if (pin.user_has_liked) { %>
+                  <!-- Display solid heart icon to indicate the pin is liked -->
+                  <i class="fa-solid fa-heart" data-pin-id="<%= pinId %>"></i>
+              <% } else { %>
+                  <!-- Display regular heart icon to indicate the pin is not yet liked -->
+                  <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
+              <% } %>
+
+          <% } else { %>
+              <!-- If the current user is the owner of the pin, display an invisible heart to maintain layout -->
+              <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
+          <% } %>
+          <!-- Display filled heart (below) dynamically if user has liked pin: -->
+          <!-- <a href=""><i class="fa-solid fa-heart"></i></a> -->
+          <!-- <div class="stars empty">
+          <a href=""><i class="fa-regular fa-star"></i></a>
+          <a href=""><i class="fa-regular fa-star"></i></a>
+          <a href=""><i class="fa-regular fa-star"></i></a>
+          <a href=""><i class="fa-regular fa-star"></i></a>
+          <a href=""><i class="fa-regular fa-star"></i></a>
+        </div> -->
+          <div class="stars full">
+            <a href=""><i class="fa-solid fa-star"></i></a>
+            <a href=""><i class="fa-solid fa-star"></i></a>
+            <a href=""><i class="fa-solid fa-star"></i></a>
+            <a href=""><i class="fa-solid fa-star"></i></a>
+            <a href=""><i class="fa-solid fa-star"></i></a>
+          </div>
+        </div>
+        <div class="comments">
+          <% for (const comment of comments) { %>
+            <article class="comment">
+              <div class="comment-user">
+                <i id="comment-icon" class="fa-solid fa-user"></i>
+                <div class="comment-name-date">
+                  <a href="/users/<%= comment.owner_id %>" class="username">
+                    <h5><%= comment.name %></h5>
+                  </a>
+                  <h6><%= comment.created_at %></h6>
+                </div>
+              </div>
+              <p><%= comment.description %></p>
+            </article>
+            <hr>
+            <% } %>
+            <% if (userId) { %>
+              <form method="POST" action="/api/pins/<%= pinId %>/comments" id="comment-form">
+                <input type="text" id="add-comment" name="description" placeholder="Add a comment">
+              </form>
+            <% } %>
+        </div>
+      </div>
     </div>
-  </div>
 </body>
 </html>

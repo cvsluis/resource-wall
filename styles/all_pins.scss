@@ -1,0 +1,73 @@
+.grid {
+  width: 90%;
+  max-width: 1350px;
+  margin: 95px auto 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 2em;
+}
+
+div.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #333;
+  border-radius: 25px;
+  width: 13rem;
+  height: 18rem;
+  border-radius: 25px;
+}
+
+div.image:hover {
+  opacity: 0.75;
+}
+
+p.text-link {
+  height: 10em;
+  margin: 0;
+  padding-top: 1em;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 235px;
+  font-size: 0.9rem;
+}
+
+div.meta-text {
+  padding-left: 8px;
+  max-width: 208px;
+}
+
+h3 {
+  margin: 0;
+}
+
+div.icon-username {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 1.5rem;
+}
+
+.grid .text {
+  padding: 20px;
+}
+
+div.text h3 {
+  margin: 0;
+  height: 40px;
+  overflow: hidden; /* Ensures no overflow */
+}
+
+.hidden-article {
+  visibility: hidden;
+  height: 0px;
+}
+

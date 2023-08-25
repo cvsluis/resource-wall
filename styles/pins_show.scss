@@ -1,11 +1,9 @@
 #pin {
   display: flex;
   width: 50%;
-  height: 50rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 75px;
+  flex-direction: column;
+  margin-top: 95px;
+  margin-bottom: 25px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   color: #333;
@@ -13,27 +11,55 @@
   padding: 3rem;
 }
 
+.close-button {
+  align-self: flex-end;
+}
+
+.pin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text h1, p {
+  margin: 0;
+}
+
 img {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 100%;
 }
 
-#tags {
-  width: 100%;
-}
-
-#tag {
+#single-pin-img {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e5e5e5;
+  height: 35rem;
+  width: 100%;
+  padding: 4em;
+}
+
+.tag {
+  background-color: #6b63ff4c;
   height: 2rem;
-  width: 8rem;
+  text-align: center;
   border-radius: 25px;
   border: none;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 6px 16px;
+  width: max-content;
+}
+
+.tag:hover {
+  background-color: #6b63ff6f;
 }
 
 #heart-stars {
@@ -42,30 +68,80 @@ img {
   width: 100%;
 }
 
-#comments article {
-  display: flex;
-  justify-content: flex-start;
-  background-color: red;
-  border-radius: 25px;
-  background-color: #fff;
-}
-
-#user-timestamp {
+.comments {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  gap: 12px;
 }
 
-#comment-icon {
-  padding-top: 1.2rem;
-  padding-bottom: 1rem;
+.comments hr {
+  border: 0px;
+  height: 1px;
+  background: #f6f6f6;
+  width: 100%;
+}
+
+.comment {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 25px;
+}
+
+.comment-user {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  flex-basis: 35%;
+}
+
+.comment-user i {
+  margin-top: 2px;
+  font-size: 16px;
+}
+
+.comment-name-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.comment-name-date h5 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.comment-name-date h6 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #a7a7a7;
+  margin-left: 1px;
+}
+
+.username:hover {
+  text-decoration: underline;
+}
+
+.comment p {
+  flex-basis: 65%;
 }
 
 h5 {
   margin: 0;
 }
 
-h6 {
-  margin: 0;
-  color: #767676;
+#add-comment{
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #f6f6f6;
+  color: black;
+}
+
+.fa-invisible {
+  visibility: hidden;
 }

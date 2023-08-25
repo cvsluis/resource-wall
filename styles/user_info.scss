@@ -1,0 +1,40 @@
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 140px;
+  color: rgb(95, 99, 106);
+  font-family: Helvetica, sans-serif;
+  gap: 26px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 110%;
+}
+
+.user-info > * {
+  margin: 0;
+}
+
+.user-info h4 {
+  font-weight: normal;
+  color: gray;
+}
+
+.edit-button {
+  background-color: #6C63FF;
+  color: #fff;
+  height: 2rem;
+  border: none;
+  border-radius: 25px;
+  padding: 6px 25px;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+  background-color: #564ef0;
+}

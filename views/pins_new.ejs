@@ -27,8 +27,8 @@
 <body>
   <%- include('partials/_nav.ejs') %>
 
-    <div id="pin-new">
-      <a href="/" class="close-button"><i class="fa-solid fa-x"></i></a>
+    <div class="pin-new">
+      <a href="/pins/" class="close-button"><i class="fa-solid fa-x"></i></a>
       <form action="/api/pins/" method="POST">
         <input type="text" id="add-pin-title" name="title" placeholder="Add your title" required>
         <div class="form-inputs">
@@ -47,8 +47,8 @@
           </div>
           <div class="categories">
             <% for (const category of categories) { %>
-              <input type="radio" value="<%= category.id %>" name="category_id" id="<%= category.id %>" required>
-              <label for="<%= category.id %>"><%= category.title %></label>
+              <input type="radio" value="<%= category.id %>" name="category_id" id="tag-<%= category.id %>" required/>
+              <label for="tag-<%= category.id %>"><%= category.title %></label>
             <% } %>
           </div>
         </div>

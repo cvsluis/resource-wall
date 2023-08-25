@@ -10,93 +10,122 @@ const getUsers = () => {
 // model after LightBnB getAllProperties
 // check for categories, ratings
 // potential second parameter
-const getAllPins = (options) => {
+const getAllPins = (searchString) => {
   // Initialize an array to store the query parameters
   const queryParams = [];
 
   // Initialize the base query string that retrieves pin data along with owner names
   let queryString = `
-   SELECT pins.title, pins.description, pins.image, users.name AS owner_name,
-           categories.title AS category_title, AVG(ratings.rating) AS average_rating
+    SELECT pins.id, pins.title, pins.description, users.name AS owner_name, users.id AS owner_id, categories.title AS category_title, AVG(ratings.rating) AS average_rating, images.url AS image_url, images.alt AS image_alt
     FROM pins
     JOIN users ON pins.owner_id = users.id
     LEFT JOIN categories ON pins.category_id = categories.id
-    LEFT JOIN ratings ON pins.id = ratings.pin_id`;
+    LEFT JOIN ratings ON pins.id = ratings.pin_id
+    LEFT JOIN images ON pins.image_id = images.id
+  `;
 
-  // Initialize arrays to store WHERE and HAVING clauses
-  const whereClauses = [];
-  const havingClauses = [];
-
-  // Check options and build clauses and queryParams accordingly
-  if (options.category) {
-    queryParams.push(options.category);
-    whereClauses.push(`categories.title = $${queryParams.length}`);
+  // Check if searchString exists and add a WHERE clause to filter by it
+  if (searchString) {
+    queryParams.push(`%${searchString}%`);
+    queryString += `WHERE categories.title ILIKE $${queryParams.length} OR pins.title ILIKE $${queryParams.length} OR pins.description ILIKE $${queryParams.length} `;
   }
 
-  // Check if the 'minimum_rating' option is provided
-  if (options.minimum_rating) {
-    queryParams.push(options.minimum_rating);
-    havingClauses.push(`average_rating >= $${queryParams.length}`);
-  }
-
-  // Build the WHERE part of the query if there are clauses
-  if (whereClauses.length > 0) {
-    queryString += ' WHERE ';
-    queryString += whereClauses.join(' AND ');
-  }
-
-  // GROUP BY clause
+  // Grouping the results by the pin id, owner name, and category title
   queryString += `
-    GROUP BY pins.id`;
+    GROUP BY pins.id, users.name, users.id, categories.title, images.url, images.alt
+    ORDER BY pins.created_at DESC;
+  `;
 
-  // Build the HAVING part of the query if there are clauses
-  if (havingClauses.length > 0) {
-    queryString += ' HAVING ';
-    queryString += havingClauses.join(' AND ');
-  }
-
-  // Finalize the query
-  queryString += ';';
-
-// Execute the query using db.query with the queryParams
+  // Execute the query using db.query with the queryParams
   return db
-  .query(queryString, queryParams)
-  .then((result) => {
-    return result.rows;
-  });
+    .query(queryString, queryParams)
+    .then((result) => {
+      return result.rows;
+    });
 };
 
 // takes in user id
 // return user's saved pins and liked pins in json format
 const getUserPins = (userId) => {
+  const query = `
+  (SELECT
+  pins.id,
+  pins.url,
+  pins.title,
+  pins.description,
+  pins.created_at AS created_at,
+  images.url AS image_url,
+  images.alt AS image_alt,
+  users.name AS owner_name,
+  users.id AS owner_id
+FROM pins
+JOIN users on pins.owner_id = users.id
+JOIN images on pins.image_id = images.id
+WHERE pins.owner_id = $1)
 
+UNION
+
+(SELECT
+  pins.id,
+  pins.url,
+  pins.title,
+  pins.description,
+  pins.created_at AS created_at,
+  images.url AS image_url,
+  images.alt AS image_alt,
+  users.name AS owner_name,
+  users.id AS owner_id
+FROM pins
+JOIN likes ON pins.id = likes.pin_id
+JOIN users on pins.owner_id = users.id
+JOIN images on pins.image_id = images.id
+WHERE likes.owner_id = $1)
+ORDER BY created_at DESC
+  `;
+
+  return db
+    .query(query, [userId])
+    .then((result) => {
+      const pins = result.rows;
+      if (!pins) {
+        throw new Error('No pins found for this user');
+      }
+
+      return pins;
+    });
 };
 
 // takes in pin id
 // returns all information pertaining to that pin
 // also comments, likes and ratings
-const getOnePin = (pinId) => {
+const getOnePin = (pinId, userId) => {
   const queryString = `
-  SELECT pins.*, avg_rating.average_rating, comments.description, comments.created_at
+  SELECT
+    pins.*,
+    images.url AS image_url,
+    images.alt AS image_alt,
+    avg_rating.average_rating,
+    categories.title as category_name,
+    CASE
+        WHEN likes.id IS NULL THEN FALSE
+        ELSE TRUE
+    END AS user_has_liked
   FROM pins
-  LEFT JOIN (
-    SELECT pin_id, description, created_at
-    FROM comments
-    WHERE pin_id = $1
-    ORDER BY created_at
-  ) AS comments ON pins.id = comments.pin_id
   LEFT JOIN (
     SELECT pin_id, AVG(rating) AS average_rating
     FROM ratings
     GROUP BY pin_id
   ) AS avg_rating ON pins.id = avg_rating.pin_id
+  LEFT JOIN likes ON pins.id = likes.pin_id AND likes.owner_id = $2
+  JOIN images on pins.image_id = images.id
+  JOIN categories ON categories.id = pins.category_id
   WHERE pins.id = $1;
 `;
 
   return db
-    .query(queryString, [pinId])
+    .query(queryString, [pinId, userId])
     .then((result) => {
-      return result.rows;
+      return result.rows[0];
     });
 };
 
@@ -112,8 +141,8 @@ const addOnePin = (pin) => {
     pin.description,
   ];
   const queryString = `
-  INSERT INTO pins (owner_id, category_id, url, title, description)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO pins (owner_id, category_id, url, title, description, image_id)
+  VALUES ($1, $2, $3, $4, $5, $2)
   RETURNING *;`;
 
   return db

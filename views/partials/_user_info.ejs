@@ -1,0 +1,13 @@
+<div class="user-info-container">
+  <div class="user-info">
+    <h2><%= profile.name %></h2>
+    <h4>@<%= profile.username %> <%= profile.pronouns %></h4>
+    <h3><%= pins.length %> Ideas Pinned</h3>
+    <p><%= profile.about_me %></p>
+  </div>
+  <% if (userId == profile.id) { %>
+    <div>
+      <a href="/users/<%= profile.id %>/edit"><p class="edit-button">Edit Profile</p></a>
+    </div>
+    <% } %>
+</div>
