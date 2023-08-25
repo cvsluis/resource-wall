@@ -39,6 +39,8 @@
         </div>
         <a href="/pins/?q=<%= pin.category_name %>" title="Click here to browse this category"><p class="tag"><%= pin.category_name %></p></a>
         <div id="heart-stars">
+
+
           <!-- Check if the current user is NOT the owner of the pin -->
           <% if (userId != pin.owner_id) { %>
 
@@ -55,18 +57,25 @@
               <!-- If the current user is the owner of the pin, display an invisible heart to maintain layout -->
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
           <% } %>
-          <% if (userId) { %>
-            <!-- update to include same logic as for heart? re: owner id -->
-            <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
-              <div class="stars">
-                <% for (let i = 1; i <= 5; i++) { %>
-                  <input type="radio" value="<%= i %>" name="rating" id="empty-star-<%= i %>">
-                  <label for="empty-star-<%= i %>"><a href=""><i class="fa-regular fa-star"></i></a></label>
-                <% } %>
-                  <!-- <a href=""><i class="fa-solid fa-star"></i></a> -->
-              </div>
-            </form>
-          <% } %>
+
+          <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
+            <div class="stars">
+              <input type="radio" value="1" name="rating" id="star-1">
+              <label for="star-1"><i class="fa-regular fa-star" data-pin-id="<%= pinId %>"></i></label>
+
+              <input type="radio" value="2" name="rating" id="star-2">
+              <label for="star-2"><i class="fa-regular fa-star" data-pin-id="<%= pinId %>"></i></label>
+
+              <input type="radio" value="3" name="rating" id="star-3">
+              <label for="star-3"><i class="fa-regular fa-star" data-pin-id="<%= pinId %>"></i></label>
+
+              <input type="radio" value="4" name="rating" id="star-4">
+              <label for="star-4"><i class="fa-regular fa-star" data-pin-id="<%= pinId %>"></i></label>
+
+              <input type="radio" value="5" name="rating" id="star-5">
+              <label for="star-5"><i class="fa-regular fa-star" data-pin-id="<%= pinId %>"></i></label>
+            </div>
+          </form>
         </div>
         </div>
         <div class="comments">
