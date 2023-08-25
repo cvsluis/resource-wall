@@ -48,11 +48,12 @@ const getAllPins = (searchString) => {
 // return user's saved pins and liked pins in json format
 const getUserPins = (userId) => {
   const query = `
-  SELECT
+  (SELECT
   pins.id,
   pins.url,
   pins.title,
   pins.description,
+  pins.created_at AS created_at,
   images.url AS image_url,
   images.alt AS image_alt,
   users.name AS owner_name,
@@ -60,15 +61,16 @@ const getUserPins = (userId) => {
 FROM pins
 JOIN users on pins.owner_id = users.id
 JOIN images on pins.image_id = images.id
-WHERE pins.owner_id = $1
+WHERE pins.owner_id = $1)
 
 UNION
 
-SELECT
+(SELECT
   pins.id,
   pins.url,
   pins.title,
   pins.description,
+  pins.created_at AS created_at,
   images.url AS image_url,
   images.alt AS image_alt,
   users.name AS owner_name,
@@ -77,7 +79,8 @@ FROM pins
 JOIN likes ON pins.id = likes.pin_id
 JOIN users on pins.owner_id = users.id
 JOIN images on pins.image_id = images.id
-WHERE likes.owner_id = $1
+WHERE likes.owner_id = $1)
+ORDER BY created_at DESC
   `;
 
   return db
