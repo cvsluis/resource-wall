@@ -1,3 +1,7 @@
+body {
+  background-color: #fff;
+}
+
 .landing-container {
   height: 90vh;
   display: flex;
@@ -14,7 +18,14 @@
 .call-to-action {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+}
+
+.call-to-action h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 52px;
+  font-weight: normal;
+  color: #6C63FF;
 }
 
 .call-to-action > * {
@@ -22,7 +33,7 @@
 }
 
 .call-to-action-btn {
-  background-color: #6C63FF;
+  background-color: #564ef0d8;
   color: #fff;
   min-height: 2.5rem;
   border: none;
