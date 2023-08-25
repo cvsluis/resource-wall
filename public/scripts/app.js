@@ -62,24 +62,17 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    let apiUrl;
     const starOne = $(this);
-
-    // Determine the API URL and request method based on whether the star icon is currently filled
-    if (isFilled) {
-      // // Set URL for delete like if it's already liked
-      apiUrl = `/api/pins/${pinId}/ratings/delete`;
-      methodType = 'DELETE';
-    } else {
-      // Set URL for add rating if pin has not yet been rated
-      apiUrl = `/api/pins/${pinId}/ratings`;
-      methodType = 'POST';
-    }
 
     // Execute AJAX request to the server
     $.ajax({
-      url: apiUrl,
-      type: methodType,
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 1
+      },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
         if (isFilled) {
@@ -108,24 +101,17 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    let apiUrl;
     const starTwo = $(this);
-
-    // Determine the API URL and request method based on whether the star icon is currently filled
-    if (isFilled) {
-      // // Set URL for delete like if it's already liked
-      apiUrl = `/api/pins/${pinId}/ratings/delete`;
-      methodType = 'DELETE';
-    } else {
-      // Set URL for add rating if pin has not yet been rated
-      apiUrl = `/api/pins/${pinId}/ratings`;
-      methodType = 'POST';
-    }
 
     // Execute AJAX request to the server
     $.ajax({
-      url: apiUrl,
-      type: methodType,
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 1
+      },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
         if (isFilled) {
@@ -154,24 +140,17 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    let apiUrl;
     const starThree = $(this);
-
-    // Determine the API URL and request method based on whether the star icon is currently filled
-    if (isFilled) {
-      // // Set URL for delete like if it's already liked
-      apiUrl = `/api/pins/${pinId}/ratings/delete`;
-      methodType = 'DELETE';
-    } else {
-      // Set URL for add rating if pin has not yet been rated
-      apiUrl = `/api/pins/${pinId}/ratings`;
-      methodType = 'POST';
-    }
 
     // Execute AJAX request to the server
     $.ajax({
-      url: apiUrl,
-      type: methodType,
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 1
+      },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
         if (isFilled) {
@@ -200,24 +179,17 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    let apiUrl;
     const starFour = $(this);
-
-    // Determine the API URL and request method based on whether the star icon is currently filled
-    if (isFilled) {
-      // // Set URL for delete like if it's already liked
-      apiUrl = `/api/pins/${pinId}/ratings/delete`;
-      methodType = 'DELETE';
-    } else {
-      // Set URL for add rating if pin has not yet been rated
-      apiUrl = `/api/pins/${pinId}/ratings`;
-      methodType = 'POST';
-    }
 
     // Execute AJAX request to the server
     $.ajax({
-      url: apiUrl,
-      type: methodType,
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 1
+      },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
         if (isFilled) {
@@ -246,24 +218,17 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    let apiUrl;
     const starFive = $(this);
-
-    // Determine the API URL and request method based on whether the star icon is currently filled
-    if (isFilled) {
-      // // Set URL for delete like if it's already liked
-      apiUrl = `/api/pins/${pinId}/ratings/delete`;
-      methodType = 'DELETE';
-    } else {
-      // Set URL for add rating if pin has not yet been rated
-      apiUrl = `/api/pins/${pinId}/ratings`;
-      methodType = 'POST';
-    }
 
     // Execute AJAX request to the server
     $.ajax({
-      url: apiUrl,
-      type: methodType,
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 1
+      },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
         if (isFilled) {
@@ -283,12 +248,12 @@ Linkfolio.adjustRating = function() {
     });
   }
 
-  $ratingForm.on("submit", function(event) {
-    event.preventDefault(); // event.preventDefault prevents the default
-  // form submission behaviour, which is to send the post request and
-  // reload the page.
-  // radio will have to be submit for form - need to update EJS
-  });
+  // $ratingForm.on("submit", function(event) {
+  //   event.preventDefault(); // event.preventDefault prevents the default
+  // // form submission behaviour, which is to send the post request and
+  // // reload the page.
+  // // radio will have to be submit for form - need to update EJS
+  // });
 };
 
 Linkfolio.searchCategory = function() {
