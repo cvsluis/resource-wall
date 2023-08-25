@@ -33,8 +33,19 @@
 
 img {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 100%;
+}
+
+#single-pin-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35rem;
+  width: 100%;
+  padding: 4em;
 }
 
 .tag {
