@@ -2,20 +2,32 @@
   <main class="grid">
     <% for (const pin of pins) { %>
       <article>
-        <div class="text">
-          <a href="/pins/<%= pin.id %>" class="card">
-            <p class="text-link"><%= pin.description %></p>
+        <div class="image">
+          <!-- Displaying the pin's image -->
+          <a href="/pins/<%= pin.id %>">
+            <img src="<%= pin.image_url %>" alt="<%= pin.image_alt %>">
           </a>
         </div>
         <div class="meta-text">
-          <a href="/pins/<%= pin.id %>" class="title">
+          <!-- Displaying the pin's title -->
+          <a href="/pins/<%= pin.id %>" class="text-link">
             <h3><%= pin.title %></h3>
           </a>
           <div class="icon-username">
-            <i id="comment-icon" class="fa-solid fa-user"></i><h5><%= pin.owner_name %></h5>
+            <!-- User icon -->
+            <i id="comment-icon" class="fa-solid fa-user"></i>
+            <!-- Displaying the owner's name -->
+            <a href="/users/<%= pin.owner_id %>" class="username">
+              <h5><%= pin.owner_name %></h5>
+            </a>
           </div>
         </div>
       </article>
     <% } %>
+    <article class="hidden-article"><div class="image"></div></article>
+    <article class="hidden-article"><div class="image"></div></article>
+    <article class="hidden-article"><div class="image"></div></article>
+    <article class="hidden-article"><div class="image"></div></article>
+    <article class="hidden-article"><div class="image"></div></article>
   </main>
 </div>

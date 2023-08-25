@@ -1,23 +1,29 @@
 .grid {
-  margin: 50px 0px 50px;
+  width: 90%;
+  max-width: 1350px;
+  margin: 95px auto 50px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  grid-gap: 20px;
-  max-width: 100%;
-  column-gap: 2em;
-  padding: 2.5em 4em 0em;
+  flex-direction: row;
+  gap: 2em;
 }
 
-div.text {
+div.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   color: #333;
   border-radius: 25px;
-  width: 235px;
-  // height: 335px;
-  height: fit-content;
-  padding: 0;
+  width: 13rem;
+  height: 18rem;
+  border-radius: 25px;
+}
+
+div.image:hover {
+  opacity: 0.75;
 }
 
 p.text-link {
@@ -29,15 +35,14 @@ p.text-link {
 article {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 10px;
   max-width: 235px;
-  justify-content: center;
   font-size: 0.9rem;
 }
 
 div.meta-text {
   padding-left: 8px;
+  max-width: 208px;
 }
 
 h3 {
@@ -51,10 +56,18 @@ div.icon-username {
   height: 1.5rem;
 }
 
-article:hover {
-  opacity: 0.75;
-}
-
 .grid .text {
   padding: 20px;
 }
+
+div.text h3 {
+  margin: 0;
+  height: 40px;
+  overflow: hidden; /* Ensures no overflow */
+}
+
+.hidden-article {
+  visibility: hidden;
+  height: 0px;
+}
+
