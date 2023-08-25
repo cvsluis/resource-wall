@@ -2,12 +2,12 @@
   <main class="grid">
     <% for (const pin of pins) { %>
       <article>
-        <div class="image">
-          <!-- Displaying the pin's image -->
-          <a href="/pins/<%= pin.id %>">
+        <!-- Displaying the pin's image -->
+        <a href="/pins/<%= pin.id %>">
+          <div class="image">
             <img src="<%= pin.image_url %>" alt="<%= pin.image_alt %>">
-          </a>
-        </div>
+          </div>
+        </a>
         <div class="meta-text">
           <!-- Displaying the pin's title -->
           <a href="/pins/<%= pin.id %>" class="text-link">

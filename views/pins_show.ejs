@@ -55,22 +55,19 @@
               <!-- If the current user is the owner of the pin, display an invisible heart to maintain layout -->
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
           <% } %>
-          <!-- Display filled heart (below) dynamically if user has liked pin: -->
-          <!-- <a href=""><i class="fa-solid fa-heart"></i></a> -->
-          <!-- <div class="stars empty">
-          <a href=""><i class="fa-regular fa-star"></i></a>
-          <a href=""><i class="fa-regular fa-star"></i></a>
-          <a href=""><i class="fa-regular fa-star"></i></a>
-          <a href=""><i class="fa-regular fa-star"></i></a>
-          <a href=""><i class="fa-regular fa-star"></i></a>
-        </div> -->
-          <div class="stars full">
-            <a href=""><i class="fa-solid fa-star"></i></a>
-            <a href=""><i class="fa-solid fa-star"></i></a>
-            <a href=""><i class="fa-solid fa-star"></i></a>
-            <a href=""><i class="fa-solid fa-star"></i></a>
-            <a href=""><i class="fa-solid fa-star"></i></a>
-          </div>
+          <% if (userId) { %>
+            <!-- update to include same logic as for heart? re: owner id -->
+            <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
+              <div class="stars">
+                <% for (let i = 1; i <= 5; i++) { %>
+                  <input type="radio" value="<%= i %>" name="rating" id="empty-star-<%= i %>">
+                  <label for="empty-star-<%= i %>"><a href=""><i class="fa-regular fa-star"></i></a></label>
+                <% } %>
+                  <!-- <a href=""><i class="fa-solid fa-star"></i></a> -->
+              </div>
+            </form>
+          <% } %>
+        </div>
         </div>
         <div class="comments">
           <% for (const comment of comments) { %>

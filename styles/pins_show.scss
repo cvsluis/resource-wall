@@ -133,6 +133,24 @@ h5 {
   margin: 0;
 }
 
+div.stars {
+  cursor: pointer;
+}
+
+i.fa-regular:hover {
+  color: #564ef0;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  position: fixed;
+  visibility: hidden;
+}
+
+input[type="radio"]:checked + label {
+  color: #564ef0;
+}
+
 #add-comment{
   width: 100%;
   padding: 12px;
@@ -144,4 +162,12 @@ h5 {
 
 .fa-invisible {
   visibility: hidden;
+}
+
+.fa-heart {
+  color: #564ef0;
+}
+
+.fa-heart:hover {
+  cursor: pointer;
 }
