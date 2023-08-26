@@ -1,26 +1,21 @@
 Users
-Read    GET   /users/:id          // View user profile page and user's saved and liked pins
-Read    GET   /users/:id/edit     // View user edit profile page
-Edit    POST  /users/:id/edit     // Edit user profile 
+Read    GET   /users/:id                                // View user profile page and user's saved and liked pins
+Read    GET   /users/:id/edit                           // View user edit profile page
+Edit    POST  /users/:id/edit                           // Edit user profile 
 
 Login
-Read    GET   /users/login/:id    // Login user     
+Read    GET   /login/:id                                // Login user     
 
 Pins
-Browse  GET   /pins               // View all pins in database
-Read    GET   /pins/:id           // View one pin
-Add     POST  /pins               // Add pin
+Browse  GET   /pins/                                    // View all pins in database
+Read	  GET	  /pins/new		                              // View add one pin
+Read    GET   /pins/:id                                 // View one pin
 
-Comments
-Browse  GET   /comments           // View all comments
-Add     POST  /comments           // Add comment
+Add     POST  /api/pins                                 // Add pin
 
-Ratings
-Browse  GET   /ratings            // View all ratings
-Edit    POST  /ratings/:id        // Update rating (maybe stretch?)
-Add     POST  /ratings            // Add rating
+Add     POST  /api/pins/:pinId/comments                 // Add comment
 
-Likes
-Browse  GET   /ratings/           // View all likes
-Add     POST  /ratings            // Add like
-Delete  POST  /ratings/:id/delete // Remove like
+Add     POST  /api/pins/:pinId/ratings                  // Add rating
+
+Add     POST  /api/pins/:pinId/likes                    // Add like
+Delete  POST  /api/pins/:pinId/likes/delete             // Remove like
