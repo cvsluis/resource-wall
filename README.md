@@ -62,10 +62,9 @@ Logged in users can edit their profile name, username, or about me to let other 
 ## Dependencies
 - [Express](https://expressjs.com)
 - [Node.js](https://nodejs.org) v5.10.x or above
-- NPM 5.x or above
-- PG 6.x
-- cookie-session
-- pg
+- [NPM](https://www.npmjs.com) 5.x or above
+- [PG](https://www.npmjs.com/package/pg) 6.x
+- [cookie-session](https://www.npmjs.com/package/cookie-session)
 - [jQuery](https://jquery.com/)
 - [SASS](https://www.npmjs.com/package/sass)
 - [timeago.js](https://cdnjs.com/libraries/timeago.js)
