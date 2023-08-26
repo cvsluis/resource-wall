@@ -55,15 +55,16 @@ Linkfolio.adjustRating = function() {
   console.log("Checking adjustRating");
   // url: /api/pins/:id/ratings
   $('#star-1').on('click', function() {
-    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
+
+    // console.log($(this).next('label').children('i')[0]);
 
     // Retrieve the pin ID from the element's data attribute
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starOne = $(this);
+    const starOne = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -94,7 +95,6 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-2').on('click', function() {
-    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -102,7 +102,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starTwo = $(this);
+    const starTwo = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -133,7 +133,6 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-3').on('click', function() {
-    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -141,7 +140,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starThree = $(this);
+    const starThree = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -172,7 +171,6 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-4').on('click', function() {
-    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -180,7 +178,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starFour = $(this);
+    const starFour = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -211,7 +209,6 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-5').on('click', function() {
-    console.log($(this));
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
 
@@ -219,7 +216,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starFive = $(this);
+    const starFive = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
