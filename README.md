@@ -14,22 +14,28 @@ This project was built as a part of our learnings at [Lighthouse Labs](https://w
 
 ## Final Product
 View of Landing Page
-!["Screenshot of Landing Page"](/public/assets/landing.png)
+!["Demo 1"](./docs/demo-1.gif)
+
+View of Landing Page
+!["Demo 2"](./docs/demo-2.gif)
+
+View of Landing Page
+!["Screenshot of Landing Page"](./docs/screenshots/landing.png)
 
 View of Home Page with Search Feature
-!["Screenshot of Home Page"](/public/assets/search_bar.png)
+!["Screenshot of Home Page"](./docs/screenshots/search_bar.png)
 
 View of Add Resource Page
-!["Screenshot of Add Resource Page"](/public/assets/add_resource.png)
+!["Screenshot of Add Resource Page"](./docs/screenshots/add_resource.png)
 
 View of Edit Profile Page
-!["Screenshot of Edit Profile Page"](/public/assets/edit_profile.png)
+!["Screenshot of Edit Profile Page"](./docs/screenshots/edit_profile.png)
 
 View of User Profile Page
-!["Screenshot of User Profile Page"](/public/assets/user_view.png)
+!["Screenshot of User Profile Page"](./docs/screenshots/user_view.png)
 
 View of User Resource Interactions
-!["Screenshot of User Resource Interactions"](/public/assets/like_rate_comment.png)
+!["Screenshot of User Resource Interactions"](./docs/screenshots/like_rate_comment.png)
 
 ## Features
 **Save a Resource**
