@@ -51,6 +51,158 @@ Linkfolio.toggleLike = function() {
 
 };
 
+Linkfolio.adjustRating = function() {
+  const starOne = $('#icon-1');
+  const starTwo = $('#icon-2');
+  const starThree = $('#icon-3');
+  const starFour = $('#icon-4');
+  const starFive = $('#icon-5');
+
+  // url: /api/pins/:id/ratings
+
+  $('#star-1').on('click', function() {
+    // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
+    const isFilled = $(this).hasClass('fa-solid');
+
+    // console.log($(this).next('label').children('i')[0]);
+
+    // Retrieve the pin ID from the element's data attribute
+    const pinId = $(this).data('pin-id');
+
+    // const starOne = $(this).next('label').children('i');
+
+    // Execute AJAX request to the server
+    $.ajax({
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 1
+      },
+      success: (response) => {
+        // If the star was originally in a filled state, it's now empty. Update its visual state.
+        if (!isFilled) {
+          starOne.removeClass('fa-regular').addClass('fa-solid');
+        }
+      },
+      // Log any errors that occur during the AJAX request
+      error: (error) => {
+        console.log('Error while toggling rating: ', error);
+      }
+    });
+  });
+
+  $('#star-2').on('click', function() {
+    const isFilled = $(this).hasClass('fa-solid');
+    const pinId = $(this).data('pin-id');
+
+    $.ajax({
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 2
+      },
+      success: (response) => {
+        if (!isFilled) {
+          starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
+        }
+      },
+      error: (error) => {
+        console.log('Error while toggling rating: ', error);
+      }
+    });
+  });
+
+  $('#star-3').on('click', function() {
+    const isFilled = $(this).hasClass('fa-solid');
+    const pinId = $(this).data('pin-id');
+
+    $.ajax({
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 3
+      },
+      success: (response) => {
+        if (!isFilled) {
+          starThree.removeClass('fa-regular').addClass('fa-solid');
+          starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
+        }
+      },
+      error: (error) => {
+        console.log('Error while toggling rating: ', error);
+      }
+    });
+  });
+
+  $('#star-4').on('click', function() {
+    const isFilled = $(this).hasClass('fa-solid');
+    const pinId = $(this).data('pin-id');
+
+    $.ajax({
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 4
+      },
+      success: (response) => {
+        if (!isFilled) {
+          starFour.removeClass('fa-regular').addClass('fa-solid');
+          starThree.removeClass('fa-regular').addClass('fa-solid');
+          starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
+        }
+      },
+      error: (error) => {
+        console.log('Error while toggling rating: ', error);
+      }
+    });
+  });
+
+  $('#star-5').on('click', function() {
+    const isFilled = $(this).hasClass('fa-solid');
+    const pinId = $(this).data('pin-id');
+
+    $.ajax({
+      method: 'POST',
+      url: `/api/pins/${pinId}/ratings`,
+      data: {
+        pin_id: pinId,
+        owner_id: 1,
+        value: 5
+      },
+      success: (response) => {
+        if (!isFilled) {
+          starFive.removeClass('fa-regular').addClass('fa-solid');
+          starFour.removeClass('fa-regular').addClass('fa-solid');
+          starThree.removeClass('fa-regular').addClass('fa-solid');
+          starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
+        }
+      },
+      error: (error) => {
+        console.log('Error while toggling rating: ', error);
+      }
+    });
+  });
+
+  // $ratingForm.on("submit", function(event) {
+  //   event.preventDefault(); // event.preventDefault prevents the default
+  // // form submission behaviour, which is to send the post request and
+  // // reload the page.
+  // // radio will have to be submit for form - need to update EJS
+  // });
+};
+
 Linkfolio.searchCategory = function() {
   // event handler on search bar to show categories
   $('.search-bar').on('click', function(event) {
@@ -76,5 +228,6 @@ Linkfolio.searchCategory = function() {
 
 $(document).ready(function() {
   Linkfolio.toggleLike();
+  Linkfolio.adjustRating();
   Linkfolio.searchCategory();
 });

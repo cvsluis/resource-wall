@@ -9,6 +9,7 @@
   color: #333;
   border-radius: 25px;
   padding: 3rem;
+  gap: 1.5rem;
 }
 
 .close-button {
@@ -43,7 +44,6 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35rem;
   width: 100%;
   padding: 4em;
 }
@@ -66,6 +66,7 @@ img {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  font-size: 22px;
 }
 
 .comments {
@@ -74,11 +75,23 @@ img {
   gap: 12px;
 }
 
-.comments hr {
+hr.dark-line {
+  border: 0px;
+  height: 2px;
+  background: #f6f6f6;
+  width: 100%;
+}
+
+hr.light-line {
   border: 0px;
   height: 1px;
   background: #f6f6f6;
   width: 100%;
+}
+
+.comments-header h3 {
+  margin: 0;
+  margin-bottom: 1em;
 }
 
 .comment {
@@ -133,6 +146,52 @@ h5 {
   margin: 0;
 }
 
+div.stars {
+  cursor: default;
+}
+
+i.fa-solid:hover {
+  color: #564ef0;
+  cursor: pointer;
+}
+
+i.fa-regular:hover {
+  color: #564ef0;
+  cursor: pointer;
+}
+
+#user-rating-1,
+#user-rating-2,
+#user-rating-3,
+#user-rating-4,
+#user-rating-5 {
+  color: #564ef0;
+  cursor: default;
+}
+
+#user-empty:hover {
+  color: inherit;
+  cursor: default;
+}
+
+#icon-1.fa-solid,
+#icon-2.fa-solid,
+#icon-3.fa-solid,
+#icon-4.fa-solid,
+#icon-5.fa-solid {
+  color: #564ef0;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  position: fixed;
+  visibility: hidden;
+}
+
+input[type="radio"]:checked + label {
+  color: #564ef0;
+}
+
 #add-comment{
   width: 100%;
   padding: 12px;
@@ -144,4 +203,12 @@ h5 {
 
 .fa-invisible {
   visibility: hidden;
+}
+
+.fa-heart {
+  color: #564ef0;
+}
+
+.fa-heart:hover {
+  cursor: pointer;
 }
