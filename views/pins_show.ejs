@@ -63,8 +63,6 @@
               <!-- If user isn't logged in, display an invisible heart to maintain layout -->
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
           <% } %>
-
-
             <% if (pin.user_has_rated) { %>
               <div class="stars">
                 <% for (let i = 1; i <= 5; i++) { %>
@@ -74,11 +72,9 @@
                   <% if (i > pin.user_rating) { %>
                     <i class="fa-regular fa-star" id="user-empty"></i>
                 <% } %>
-              </div>
             <% } %>
             <% } else { %>
               <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
-                <div class="stars">
                   <input type="radio" value="1" name="rating" id="star-1" data-pin-id="<%= pinId %>">
                   <label for="star-1"><i class="fa-regular fa-star" id="icon-1"></i></label>
 
@@ -93,9 +89,9 @@
 
                   <input type="radio" value="5" name="rating" id="star-5" data-pin-id="<%= pinId %>">
                   <label for="star-5"><i class="fa-regular fa-star" id="icon-5"></i></label>
-                </div>
               </form>
-            <% } %>
+              </div>
+              <% } %>
         </div>
         </div>
         <div class="comments">

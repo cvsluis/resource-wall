@@ -64,6 +64,8 @@ img {
 #heart-stars {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   width: 100%;
 }
 

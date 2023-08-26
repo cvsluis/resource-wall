@@ -65,6 +65,7 @@ Linkfolio.adjustRating = function() {
     const isFilled = $(this).hasClass('fa-solid');
 
     // console.log($(this).next('label').children('i')[0]);
+    // console.log(starOne);
 
     // Retrieve the pin ID from the element's data attribute
     const pinId = $(this).data('pin-id');
