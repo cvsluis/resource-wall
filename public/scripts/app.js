@@ -52,7 +52,12 @@ Linkfolio.toggleLike = function() {
 };
 
 Linkfolio.adjustRating = function() {
-  console.log("Checking adjustRating");
+  const starOne = $('#icon-1');
+  const starTwo = $('#icon-2');
+  const starThree = $('#icon-3');
+  const starFour = $('#icon-4');
+  const starFive = $('#icon-5');
+
   // url: /api/pins/:id/ratings
   $('#star-1').on('click', function() {
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
@@ -64,7 +69,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starOne = $(this).next('label').children('i');
+    // const starOne = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -102,7 +107,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starTwo = $(this).next('label').children('i');
+    // const starTwo = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -123,6 +128,7 @@ Linkfolio.adjustRating = function() {
         else {
           console.log('Successfully liked.');
           starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
       // Log any errors that occur during the AJAX request
@@ -140,7 +146,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starThree = $(this).next('label').children('i');
+    // const starThree = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -161,6 +167,8 @@ Linkfolio.adjustRating = function() {
         else {
           console.log('Successfully liked.');
           starThree.removeClass('fa-regular').addClass('fa-solid');
+          starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
       // Log any errors that occur during the AJAX request
@@ -178,7 +186,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starFour = $(this).next('label').children('i');
+    // const starFour = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -199,6 +207,9 @@ Linkfolio.adjustRating = function() {
         else {
           console.log('Successfully liked.');
           starFour.removeClass('fa-regular').addClass('fa-solid');
+          starThree.removeClass('fa-regular').addClass('fa-solid');
+          starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
       // Log any errors that occur during the AJAX request
@@ -216,7 +227,7 @@ Linkfolio.adjustRating = function() {
     const pinId = $(this).data('pin-id');
     console.log("Pin ID:", pinId);
 
-    const starFive = $(this).next('label').children('i');
+    // const starFive = $(this).next('label').children('i');
 
     // Execute AJAX request to the server
     $.ajax({
@@ -237,6 +248,10 @@ Linkfolio.adjustRating = function() {
         else {
           console.log('Successfully liked.');
           starFive.removeClass('fa-regular').addClass('fa-solid');
+          starFour.removeClass('fa-regular').addClass('fa-solid');
+          starThree.removeClass('fa-regular').addClass('fa-solid');
+          starTwo.removeClass('fa-regular').addClass('fa-solid');
+          starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
       // Log any errors that occur during the AJAX request
