@@ -58,17 +58,18 @@
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
           <% } %>
 
-          <% if (pin.user_has_rated) { %>
-            <div class="stars">
-              <% for (let i = 1; i <= 5; i++) { %>
-                <% if (i <= pin.user_rating) { %>
-                  <i class="fa-solid fa-star" id="user-rating-<%= i %>"></i>
-                <% } else { %>
-                  <i class="fa-regular fa-star" id="user-empty"></i>
+
+            <% if (pin.user_has_rated) { %>
+              <% console.log(pin.user_rating) %>
+              <div class="stars">
+                <% for (let i = 1; i <= 5; i++) { %>
+                  <% if (i <= pin.user_rating) { %>
+                    <i class="fa-solid fa-star" id="user-rating-<%= i %>"></i>
+                  <% } %>
                 <% } %>
-              <% } %>
-            </div>
-          <% } else { %>
+              </div>
+            <% } else { %>
+
             <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
               <div class="stars">
                 <input type="radio" value="1" name="rating" id="star-1" data-pin-id="<%= pinId %>">
@@ -87,7 +88,9 @@
                 <label for="star-5"><i class="fa-regular fa-star" id="icon-5"></i></label>
               </div>
             </form>
-          <% } %>
+
+            <% } %>
+
         </div>
         </div>
         <div class="comments">
