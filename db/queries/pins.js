@@ -100,26 +100,32 @@ ORDER BY created_at DESC
 // also comments, likes and ratings
 const getOnePin = (pinId, userId) => {
   const queryString = `
-  SELECT
-    pins.*,
-    images.url AS image_url,
-    images.alt AS image_alt,
-    avg_rating.average_rating,
-    categories.title as category_name,
-    CASE
-        WHEN likes.id IS NULL THEN FALSE
-        ELSE TRUE
-    END AS user_has_liked
-  FROM pins
-  LEFT JOIN (
-    SELECT pin_id, AVG(rating) AS average_rating
-    FROM ratings
-    GROUP BY pin_id
-  ) AS avg_rating ON pins.id = avg_rating.pin_id
-  LEFT JOIN likes ON pins.id = likes.pin_id AND likes.owner_id = $2
-  JOIN images on pins.image_id = images.id
-  JOIN categories ON categories.id = pins.category_id
-  WHERE pins.id = $1;
+    SELECT
+      pins.*,
+      images.url AS image_url,
+      images.alt AS image_alt,
+      avg_rating.average_rating,
+      ratings.rating AS user_rating,
+      categories.title AS category_name,
+      CASE
+          WHEN likes.id IS NULL THEN FALSE
+          ELSE TRUE
+      END AS user_has_liked,
+      CASE
+          WHEN ratings.id = 0 THEN FALSE
+          ELSE TRUE
+      END AS user_has_rated
+    FROM pins
+    LEFT JOIN (
+      SELECT pin_id, AVG(rating) AS average_rating
+      FROM ratings
+      GROUP BY pin_id
+    ) AS avg_rating ON pins.id = avg_rating.pin_id
+    LEFT JOIN likes ON pins.id = likes.pin_id AND likes.owner_id = $2
+    LEFT JOIN ratings ON pins.id = ratings.pin_id AND ratings.owner_id = $2
+    JOIN images ON images.id = pins.image_id
+    JOIN categories ON categories.id = pins.category_id
+    WHERE pins.id = $1;
 `;
 
   return db
