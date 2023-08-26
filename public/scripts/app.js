@@ -51,6 +51,55 @@ Linkfolio.toggleLike = function() {
 
 };
 
+Linkfolio.hoverStars = function() {
+  const stars = $('label i');
+  let clickedStar = null;
+
+  stars.mouseenter(function() {
+    if (!clickedStar) {
+      const hoveredStar = $(this);
+      const hoveredIndex = stars.index(hoveredStar);
+
+      // Swap the style for the hovered star and its preceding siblings to fa-solid
+      for (let i = 0; i <= hoveredIndex; i++) {
+        stars.eq(i).removeClass('fa-regular').addClass('fa-solid');
+      }
+
+      // Revert the style for the stars after the hovered star to fa-regular
+      for (let i = hoveredIndex + 1; i < stars.length; i++) {
+        stars.eq(i).removeClass('fa-solid').addClass('fa-regular');
+      }
+    }
+  });
+
+  stars.mouseleave(function() {
+    if (!clickedStar) {
+      const hoveredStar = $(this);
+      const hoveredIndex = stars.index(hoveredStar);
+
+      // Revert the style for the hovered star and its following siblings to fa-regular
+      for (let i = hoveredIndex; i < stars.length; i++) {
+        stars.eq(i).removeClass('fa-solid').addClass('fa-regular');
+      }
+    }
+  });
+
+  stars.click(function() {
+    clickedStar = $(this);
+    const clickedIndex = stars.index(clickedStar);
+
+    // Set the style for the clicked star and its preceding siblings to fa-solid
+    for (let i = 0; i <= clickedIndex; i++) {
+      stars.eq(i).removeClass('fa-regular').addClass('fa-solid');
+    }
+
+    // Revert the style for the stars after the clicked star to fa-regular
+    for (let i = clickedIndex + 1; i < stars.length; i++) {
+      stars.eq(i).removeClass('fa-solid').addClass('fa-regular');
+    }
+  });
+};
+
 Linkfolio.adjustRating = function() {
   const starOne = $('#icon-1');
   const starTwo = $('#icon-2');
@@ -195,13 +244,6 @@ Linkfolio.adjustRating = function() {
       }
     });
   });
-
-  // $ratingForm.on("submit", function(event) {
-  //   event.preventDefault(); // event.preventDefault prevents the default
-  // // form submission behaviour, which is to send the post request and
-  // // reload the page.
-  // // radio will have to be submit for form - need to update EJS
-  // });
 };
 
 Linkfolio.searchCategory = function() {
@@ -229,6 +271,7 @@ Linkfolio.searchCategory = function() {
 
 $(document).ready(function() {
   Linkfolio.toggleLike();
+  Linkfolio.hoverStars();
   Linkfolio.adjustRating();
   Linkfolio.searchCategory();
 });
