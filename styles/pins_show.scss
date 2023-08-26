@@ -65,6 +65,8 @@ img {
 #heart-stars {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   width: 100%;
   font-size: 22px;
 }
@@ -150,13 +152,17 @@ div.stars {
   cursor: default;
 }
 
-i.fa-solid:hover {
+.stars i.fa-solid:hover {
   color: #564ef0;
   cursor: pointer;
 }
 
-i.fa-regular:hover {
+.stars i.fa-regular:hover {
   color: #564ef0;
+  cursor: pointer;
+}
+
+form#rating-form:hover {
   cursor: pointer;
 }
 
