@@ -13,7 +13,7 @@ A web app that allows learners to save learning resources like tutorials, blogs 
 This project was built as a part of our learnings at [Lighthouse Labs](https://www.lighthouselabs.ca).
 
 ## Final Product
-Project Demo: Like, comment, rate, and remove resource
+**Project Demo: Like, comment, rate, and remove resource**
 !["Demo 1"](./docs/demo-1.gif)
 
 **View of Landing Page**
