@@ -7,7 +7,7 @@ router.get('/:id', (req, res) => {
   req.session.userId = req.params.id;
 
   // send the user to home page
-  res.redirect('../');
+  res.redirect('/pins/');
 });
 
 module.exports = router;
