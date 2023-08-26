@@ -59,6 +59,7 @@ Linkfolio.adjustRating = function() {
   const starFive = $('#icon-5');
 
   // url: /api/pins/:id/ratings
+
   $('#star-1').on('click', function() {
     // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
@@ -67,7 +68,6 @@ Linkfolio.adjustRating = function() {
 
     // Retrieve the pin ID from the element's data attribute
     const pinId = $(this).data('pin-id');
-    console.log("Pin ID:", pinId);
 
     // const starOne = $(this).next('label').children('i');
 
@@ -82,13 +82,7 @@ Linkfolio.adjustRating = function() {
       },
       success: (response) => {
         // If the star was originally in a filled state, it's now empty. Update its visual state.
-        if (isFilled) {
-          console.log('Successfully cleared.');
-          starOne.removeClass('fa-solid').addClass('fa-regular');
-        }
-        // If the star was not in a filled state, it's now empty. Update its visual state.
-        else {
-          console.log('Successfully liked.');
+        if (!isFilled) {
           starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
@@ -100,16 +94,9 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-2').on('click', function() {
-    // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
-
-    // Retrieve the pin ID from the element's data attribute
     const pinId = $(this).data('pin-id');
-    console.log("Pin ID:", pinId);
 
-    // const starTwo = $(this).next('label').children('i');
-
-    // Execute AJAX request to the server
     $.ajax({
       method: 'POST',
       url: `/api/pins/${pinId}/ratings`,
@@ -119,19 +106,11 @@ Linkfolio.adjustRating = function() {
         value: 2
       },
       success: (response) => {
-        // If the star was originally in a filled state, it's now empty. Update its visual state.
-        if (isFilled) {
-          console.log('Successfully cleared.');
-          starTwo.removeClass('fa-solid').addClass('fa-regular');
-        }
-        // If the star was not in a filled state, it's now empty. Update its visual state.
-        else {
-          console.log('Successfully liked.');
+        if (!isFilled) {
           starTwo.removeClass('fa-regular').addClass('fa-solid');
           starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
-      // Log any errors that occur during the AJAX request
       error: (error) => {
         console.log('Error while toggling rating: ', error);
       }
@@ -139,16 +118,9 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-3').on('click', function() {
-    // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
-
-    // Retrieve the pin ID from the element's data attribute
     const pinId = $(this).data('pin-id');
-    console.log("Pin ID:", pinId);
 
-    // const starThree = $(this).next('label').children('i');
-
-    // Execute AJAX request to the server
     $.ajax({
       method: 'POST',
       url: `/api/pins/${pinId}/ratings`,
@@ -158,20 +130,12 @@ Linkfolio.adjustRating = function() {
         value: 3
       },
       success: (response) => {
-        // If the star was originally in a filled state, it's now empty. Update its visual state.
-        if (isFilled) {
-          console.log('Successfully cleared.');
-          starThree.removeClass('fa-solid').addClass('fa-regular');
-        }
-        // If the star was not in a filled state, it's now empty. Update its visual state.
-        else {
-          console.log('Successfully liked.');
+        if (!isFilled) {
           starThree.removeClass('fa-regular').addClass('fa-solid');
           starTwo.removeClass('fa-regular').addClass('fa-solid');
           starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
-      // Log any errors that occur during the AJAX request
       error: (error) => {
         console.log('Error while toggling rating: ', error);
       }
@@ -179,16 +143,9 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-4').on('click', function() {
-    // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
-
-    // Retrieve the pin ID from the element's data attribute
     const pinId = $(this).data('pin-id');
-    console.log("Pin ID:", pinId);
 
-    // const starFour = $(this).next('label').children('i');
-
-    // Execute AJAX request to the server
     $.ajax({
       method: 'POST',
       url: `/api/pins/${pinId}/ratings`,
@@ -198,21 +155,13 @@ Linkfolio.adjustRating = function() {
         value: 4
       },
       success: (response) => {
-        // If the star was originally in a filled state, it's now empty. Update its visual state.
-        if (isFilled) {
-          console.log('Successfully cleared.');
-          starFour.removeClass('fa-solid').addClass('fa-regular');
-        }
-        // If the star was not in a filled state, it's now empty. Update its visual state.
-        else {
-          console.log('Successfully liked.');
+        if (!isFilled) {
           starFour.removeClass('fa-regular').addClass('fa-solid');
           starThree.removeClass('fa-regular').addClass('fa-solid');
           starTwo.removeClass('fa-regular').addClass('fa-solid');
           starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
-      // Log any errors that occur during the AJAX request
       error: (error) => {
         console.log('Error while toggling rating: ', error);
       }
@@ -220,16 +169,9 @@ Linkfolio.adjustRating = function() {
   });
 
   $('#star-5').on('click', function() {
-    // Check if the star is currently in the filled state by seeing if it has the 'fa-solid' class
     const isFilled = $(this).hasClass('fa-solid');
-
-    // Retrieve the pin ID from the element's data attribute
     const pinId = $(this).data('pin-id');
-    console.log("Pin ID:", pinId);
 
-    // const starFive = $(this).next('label').children('i');
-
-    // Execute AJAX request to the server
     $.ajax({
       method: 'POST',
       url: `/api/pins/${pinId}/ratings`,
@@ -239,14 +181,7 @@ Linkfolio.adjustRating = function() {
         value: 5
       },
       success: (response) => {
-        // If the star was originally in a filled state, it's now empty. Update its visual state.
-        if (isFilled) {
-          console.log('Successfully cleared.');
-          starFive.removeClass('fa-solid').addClass('fa-regular');
-        }
-        // If the star was not in a filled state, it's now empty. Update its visual state.
-        else {
-          console.log('Successfully liked.');
+        if (!isFilled) {
           starFive.removeClass('fa-regular').addClass('fa-solid');
           starFour.removeClass('fa-regular').addClass('fa-solid');
           starThree.removeClass('fa-regular').addClass('fa-solid');
@@ -254,7 +189,6 @@ Linkfolio.adjustRating = function() {
           starOne.removeClass('fa-regular').addClass('fa-solid');
         }
       },
-      // Log any errors that occur during the AJAX request
       error: (error) => {
         console.log('Error while toggling rating: ', error);
       }
