@@ -58,24 +58,36 @@
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
           <% } %>
 
-          <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
+          <% if (pin.user_has_rated) { %>
             <div class="stars">
-              <input type="radio" value="1" name="rating" id="star-1" data-pin-id="<%= pinId %>">
-              <label for="star-1"><i class="fa-regular fa-star" id="icon-1"></i></label>
-
-              <input type="radio" value="2" name="rating" id="star-2" data-pin-id="<%= pinId %>">
-              <label for="star-2"><i class="fa-regular fa-star" id="icon-2"></i></label>
-
-              <input type="radio" value="3" name="rating" id="star-3" data-pin-id="<%= pinId %>">
-              <label for="star-3"><i class="fa-regular fa-star" id="icon-3"></i></label>
-
-              <input type="radio" value="4" name="rating" id="star-4" data-pin-id="<%= pinId %>">
-              <label for="star-4"><i class="fa-regular fa-star" id="icon-4"></i></label>
-
-              <input type="radio" value="5" name="rating" id="star-5" data-pin-id="<%= pinId %>">
-              <label for="star-5"><i class="fa-regular fa-star" id="icon-5"></i></label>
+              <% for (let i = 1; i <= 5; i++) { %>
+                <% if (i <= pin.user_rating) { %>
+                  <i class="fa-solid fa-star" id="user-rating-<%= i %>"></i>
+                <% } else { %>
+                  <i class="fa-regular fa-star" id="user-empty"></i>
+                <% } %>
+              <% } %>
             </div>
-          </form>
+          <% } else { %>
+            <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
+              <div class="stars">
+                <input type="radio" value="1" name="rating" id="star-1" data-pin-id="<%= pinId %>">
+                <label for="star-1"><i class="fa-regular fa-star" id="icon-1"></i></label>
+
+                <input type="radio" value="2" name="rating" id="star-2" data-pin-id="<%= pinId %>">
+                <label for="star-2"><i class="fa-regular fa-star" id="icon-2"></i></label>
+
+                <input type="radio" value="3" name="rating" id="star-3" data-pin-id="<%= pinId %>">
+                <label for="star-3"><i class="fa-regular fa-star" id="icon-3"></i></label>
+
+                <input type="radio" value="4" name="rating" id="star-4" data-pin-id="<%= pinId %>">
+                <label for="star-4"><i class="fa-regular fa-star" id="icon-4"></i></label>
+
+                <input type="radio" value="5" name="rating" id="star-5" data-pin-id="<%= pinId %>">
+                <label for="star-5"><i class="fa-regular fa-star" id="icon-5"></i></label>
+              </div>
+            </form>
+          <% } %>
         </div>
         </div>
         <div class="comments">

@@ -134,7 +134,7 @@ h5 {
 }
 
 div.stars {
-  cursor: pointer;
+  cursor: default;
 }
 
 i.fa-solid:hover {
@@ -145,6 +145,20 @@ i.fa-solid:hover {
 i.fa-regular:hover {
   color: #564ef0;
   cursor: pointer;
+}
+
+#user-rating-1,
+#user-rating-2,
+#user-rating-3,
+#user-rating-4,
+#user-rating-5 {
+  color: #564ef0;
+  cursor: default;
+}
+
+#user-empty:hover {
+  color: inherit;
+  cursor: default;
 }
 
 #icon-1.fa-solid,
