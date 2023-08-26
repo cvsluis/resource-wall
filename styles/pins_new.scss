@@ -82,13 +82,13 @@
   background-color: #6b63ff4c;
 }
 
-.pin-new input[type="radio"] {
+.categories input[type="radio"] {
   position: fixed;
   visibility: hidden;
   pointer-events: none;
 }
 
-.pin-new input[type="radio"]:checked + label {
+.categories input[type="radio"]:checked + label {
   background-color: #9CE37D;
 }
 

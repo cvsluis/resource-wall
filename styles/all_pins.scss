@@ -1,16 +1,12 @@
 .grid {
-  margin: 50px 0px 50px;
+  width: 90%;
+  max-width: 1350px;
+  margin: 95px auto 50px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  grid-gap: 20px;
-  // max-width: 100%;
-  width: 100rem;
-  gap: 1.5em;
-  padding: 2.5em 4em 0em;
-  margin-left: 1.5em; // Because justify-content is set to flex-start here,
-  // adding a bit of margin on the left side adjusts for grid no longer
-  // appearing centered (toggle on and off to view the difference here)
+  flex-direction: row;
+  gap: 2em;
 }
 
 div.image {
@@ -46,6 +42,7 @@ article {
 
 div.meta-text {
   padding-left: 8px;
+  max-width: 208px;
 }
 
 h3 {
@@ -68,3 +65,9 @@ div.text h3 {
   height: 40px;
   overflow: hidden; /* Ensures no overflow */
 }
+
+.hidden-article {
+  visibility: hidden;
+  height: 0px;
+}
+

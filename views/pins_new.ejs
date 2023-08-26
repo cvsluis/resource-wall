@@ -47,8 +47,8 @@
           </div>
           <div class="categories">
             <% for (const category of categories) { %>
-              <input type="radio" value="<%= category.id %>" name="category_id" id="<%= category.id %>" required>
-              <label for="<%= category.id %>"><%= category.title %></label>
+              <input type="radio" value="<%= category.id %>" name="category_id" id="tag-<%= category.id %>" required/>
+              <label for="tag-<%= category.id %>"><%= category.title %></label>
             <% } %>
           </div>
         </div>

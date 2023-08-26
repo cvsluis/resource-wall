@@ -40,21 +40,27 @@
         <a href="/pins/?q=<%= pin.category_name %>" title="Click here to browse this category"><p class="tag"><%= pin.category_name %></p></a>
         <div id="heart-stars">
 
+          <% if (userId) { %>
+              <!-- Check if the current user is NOT the owner of the pin -->
+              <% if (userId != pin.owner_id) { %>
+      
+                  <!-- If current user has liked the pin -->
+                  <% if (pin.user_has_liked) { %>
+                      <!-- Display solid heart icon to indicate the pin is liked -->
+                      <i class="fa-solid fa-heart" data-pin-id="<%= pinId %>"></i>
+                  <% } else { %>
+                      <!-- Display regular heart icon to indicate the pin is not yet liked -->
+                      <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
+                  <% } %>
+      
 
-          <!-- Check if the current user is NOT the owner of the pin -->
-          <% if (userId != pin.owner_id) { %>
-
-              <!-- If current user has liked the pin -->
-              <% if (pin.user_has_liked) { %>
-                  <!-- Display solid heart icon to indicate the pin is liked -->
-                  <i class="fa-solid fa-heart" data-pin-id="<%= pinId %>"></i>
               <% } else { %>
-                  <!-- Display regular heart icon to indicate the pin is not yet liked -->
-                  <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
+                  <!-- If the current user is the owner of the pin OR user is not logged in, display an invisible heart to maintain layout -->
+                  <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
               <% } %>
-
+      
           <% } else { %>
-              <!-- If the current user is the owner of the pin, display an invisible heart to maintain layout -->
+              <!-- If user isn't logged in, display an invisible heart to maintain layout -->
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
           <% } %>
 

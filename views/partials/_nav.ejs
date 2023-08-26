@@ -13,8 +13,8 @@
       <div id="search-dropdown">
         <div class="search-categories">
           <% for (const category of categories) { %>
-            <input type="radio" value="<%= category.id %>" name="category" id="<%= category.id %>" class="category-button" data-category="<%= category.title %>" required>
-            <label for="<%= category.id %>"><%= category.title %></label>
+            <input type="radio" value="<%= category.id %>" name="category" id="search-<%= category.id %>" class="category-button" data-category="<%= category.title %>" />
+            <label for="search-<%= category.id %>"><%= category.title %></label>
           <% } %>
           <!-- Add extra default radio button for search bar to submit without category being clicked -->
           <input type="radio" name="category" checked="true" value="none"></input>
