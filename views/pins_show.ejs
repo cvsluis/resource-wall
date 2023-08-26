@@ -34,66 +34,81 @@
           <p><%= pin.description %></p>
         </div>
         <div id="single-pin-img">
-          <a target="_blank" href="<%= pin.url %>"><img src="<%= pin.image_url %>"
-              alt="<%= pin.image_alt %>" title="Click here to view url"/></a>
+          <a target="_blank" href="<%= pin.url %>"><img src="<%= pin.image_url %>" alt="<%= pin.image_alt %>"
+              title="Click here to view url" /></a>
         </div>
-        <a href="/pins/?q=<%= pin.category_name %>" title="Click here to browse this category"><p class="tag"><%= pin.category_name %></p></a>
+        <a href="/pins/?q=<%= pin.category_name %>" title="Click here to browse this category">
+          <p class="tag"><%= pin.category_name %></p>
+        </a>
+        <% if (userId) { %>
         <div id="heart-stars">
 
           <% if (userId) { %>
-              <!-- Check if the current user is NOT the owner of the pin -->
-              <% if (userId != pin.owner_id) { %>
+            <!-- Check if the current user is NOT the owner of the pin -->
+            <% if (userId !=pin.owner_id) { %>
 
-                  <!-- If current user has liked the pin -->
-                  <% if (pin.user_has_liked) { %>
-                      <!-- Display solid heart icon to indicate the pin is liked -->
-                      <i class="fa-solid fa-heart" data-pin-id="<%= pinId %>"></i>
-                  <% } else { %>
-                      <!-- Display regular heart icon to indicate the pin is not yet liked -->
-                      <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
+              <!-- If current user has liked the pin -->
+              <% if (pin.user_has_liked) { %>
+                <!-- Display solid heart icon to indicate the pin is liked -->
+                <i class="fa-solid fa-heart" data-pin-id="<%= pinId %>"></i>
+                <% } else { %>
+                  <!-- Display regular heart icon to indicate the pin is not yet liked -->
+                  <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
                   <% } %>
 
 
-              <% } else { %>
-                  <!-- If the current user is the owner of the pin OR user is not logged in, display an invisible heart to maintain layout -->
-                  <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
-              <% } %>
+                    <% } else { %>
+                      <!-- If the current user is the owner of the pin OR user is not logged in, display an invisible heart to maintain layout -->
+                      <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
+                      <% } %>
 
-          <% } else { %>
-              <!-- If user isn't logged in, display an invisible heart to maintain layout -->
-              <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
-          <% } %>
-            <% if (pin.user_has_rated) { %>
-              <div class="stars">
-                <% for (let i = 1; i <= 5; i++) { %>
-                  <% if (i <= pin.user_rating) { %>
-                    <i class="fa-solid fa-star" id="user-rating-<%= i %>"></i>
-                  <% } %>
-                  <% if (i > pin.user_rating) { %>
-                    <i class="fa-regular fa-star" id="user-empty"></i>
-                <% } %>
-            <% } %>
-            <% } else { %>
-              <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
-                  <input type="radio" value="1" name="rating" id="star-1" data-pin-id="<%= pinId %>">
-                  <label for="star-1"><i class="fa-regular fa-star" id="icon-1"></i></label>
+                        <% } else { %>
+                          <!-- If user isn't logged in, display an invisible heart to maintain layout -->
+                          <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
+                          <% } %>
+                          <div class="stars">
+                            <% if (pin.user_has_rated) { %>
 
-                  <input type="radio" value="2" name="rating" id="star-2" data-pin-id="<%= pinId %>">
-                  <label for="star-2"><i class="fa-regular fa-star" id="icon-2"></i></label>
+                                <% for (let i=1; i <=5; i++) { %>
+                                  <% if (i <=pin.user_rating) { %>
+                                    <i class="fa-solid fa-star" id="user-rating-<%= i %>"></i>
+                                    <% } %>
+                                      <% if (i> pin.user_rating) { %>
+                                        <i class="fa-regular fa-star" id="user-empty"></i>
+                                        <% } %>
+                                          <% } %>
+                                            <% } else { %>
+                                              <form method="POST" action="/api/pins/<%= pinId %>/ratings"
+                                                id="rating-form">
+                                                <input type="radio" value="1" name="rating" id="star-1"
+                                                  data-pin-id="<%= pinId %>">
+                                                <label for="star-1"><i class="fa-regular fa-star"
+                                                    id="icon-1"></i></label>
 
-                  <input type="radio" value="3" name="rating" id="star-3" data-pin-id="<%= pinId %>">
-                  <label for="star-3"><i class="fa-regular fa-star" id="icon-3"></i></label>
+                                                <input type="radio" value="2" name="rating" id="star-2"
+                                                  data-pin-id="<%= pinId %>">
+                                                <label for="star-2"><i class="fa-regular fa-star"
+                                                    id="icon-2"></i></label>
 
-                  <input type="radio" value="4" name="rating" id="star-4" data-pin-id="<%= pinId %>">
-                  <label for="star-4"><i class="fa-regular fa-star" id="icon-4"></i></label>
+                                                <input type="radio" value="3" name="rating" id="star-3"
+                                                  data-pin-id="<%= pinId %>">
+                                                <label for="star-3"><i class="fa-regular fa-star"
+                                                    id="icon-3"></i></label>
 
-                  <input type="radio" value="5" name="rating" id="star-5" data-pin-id="<%= pinId %>">
-                  <label for="star-5"><i class="fa-regular fa-star" id="icon-5"></i></label>
-              </form>
-              </div>
-              <% } %>
+                                                <input type="radio" value="4" name="rating" id="star-4"
+                                                  data-pin-id="<%= pinId %>">
+                                                <label for="star-4"><i class="fa-regular fa-star"
+                                                    id="icon-4"></i></label>
+
+                                                <input type="radio" value="5" name="rating" id="star-5"
+                                                  data-pin-id="<%= pinId %>">
+                                                <label for="star-5"><i class="fa-regular fa-star"
+                                                    id="icon-5"></i></label>
+                                              </form>
+                              <% } %>
+                            </div>
         </div>
-        </div>
+        <% } %>
         <div class="comments-header">
           <h3>Comments</h3>
           <hr class="dark-line">
@@ -114,13 +129,14 @@
             </article>
             <hr class="light-line">
             <% } %>
-            <% if (userId) { %>
-              <form method="POST" action="/api/pins/<%= pinId %>/comments" id="comment-form">
-                <input type="text" id="add-comment" name="description" placeholder="Add a comment">
-              </form>
-            <% } %>
+              <% if (userId) { %>
+                <form method="POST" action="/api/pins/<%= pinId %>/comments" id="comment-form">
+                  <input type="text" id="add-comment" name="description" placeholder="Add a comment">
+                </form>
+                <% } %>
         </div>
       </div>
     </div>
 </body>
+
 </html>
