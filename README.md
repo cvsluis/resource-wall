@@ -13,11 +13,23 @@ A web app that allows learners to save learning resources like tutorials, blogs 
 This project was built as a part of our learnings at [Lighthouse Labs](https://www.lighthouselabs.ca).
 
 ## Final Product
-View of Home Page
-!["Screenshot"](url)
+View of Landing Page
+!["Screenshot of Landing Page"](/public/assets/landing.png)
 
-View of One Pin Page
-!["Screenshot"](url)
+View of Home Page with Search Feature
+!["Screenshot of Home Page"](/public/assets/search_bar.png)
+
+View of Add Resource Page
+!["Screenshot of Add Resource Page"](/public/assets/add_resource.png)
+
+View of Edit Profile Page
+!["Screenshot of Edit Profile Page"](/public/assets/edit_profile.png)
+
+View of User Profile Page
+!["Screenshot of User Profile Page"](/public/assets/user_view.png)
+
+View of User Resource Interactions
+!["Screenshot of User Resource Interactions"](/public/assets/like_rate_comment.png)
 
 ## Features
 **Save a Resource**
