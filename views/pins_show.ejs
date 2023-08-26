@@ -43,7 +43,7 @@
           <% if (userId) { %>
               <!-- Check if the current user is NOT the owner of the pin -->
               <% if (userId != pin.owner_id) { %>
-      
+
                   <!-- If current user has liked the pin -->
                   <% if (pin.user_has_liked) { %>
                       <!-- Display solid heart icon to indicate the pin is liked -->
@@ -52,13 +52,13 @@
                       <!-- Display regular heart icon to indicate the pin is not yet liked -->
                       <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
                   <% } %>
-      
+
 
               <% } else { %>
                   <!-- If the current user is the owner of the pin OR user is not logged in, display an invisible heart to maintain layout -->
                   <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
               <% } %>
-      
+
           <% } else { %>
               <!-- If user isn't logged in, display an invisible heart to maintain layout -->
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
@@ -99,6 +99,10 @@
 
         </div>
         </div>
+        <div class="comments-header">
+          <h3>Comments</h3>
+          <hr class="dark-line">
+        </div>
         <div class="comments">
           <% for (const comment of comments) { %>
             <article class="comment">
@@ -113,7 +117,7 @@
               </div>
               <p><%= comment.description %></p>
             </article>
-            <hr>
+            <hr class="light-line">
             <% } %>
             <% if (userId) { %>
               <form method="POST" action="/api/pins/<%= pinId %>/comments" id="comment-form">
