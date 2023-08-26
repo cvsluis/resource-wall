@@ -16,25 +16,25 @@ This project was built as a part of our learnings at [Lighthouse Labs](https://w
 Project Demo: Like, comment, rate, and remove resource
 !["Demo 1"](./docs/demo-1.gif)
 
-Project Demo: Add and search for resources
-!["Demo 2"](./docs/demo-2.gif)
-
-View of Landing Page
+**View of Landing Page**
 !["Screenshot of Landing Page"](./docs/screenshots/landing.png)
 
-View of Home Page with Search Feature
+**View of Home Page with Search Feature**
 !["Screenshot of Home Page"](./docs/screenshots/search_bar.png)
 
-View of Add Resource Page
+**View of Add Resource Page**
 !["Screenshot of Add Resource Page"](./docs/screenshots/add_resource.png)
 
-View of Edit Profile Page
+**Project Demo: Add and search for resources**
+!["Demo 2"](./docs/demo-2.gif)
+
+**View of Edit Profile Page**
 !["Screenshot of Edit Profile Page"](./docs/screenshots/edit_profile.png)
 
-View of User Profile Page
+**View of User Profile Page**
 !["Screenshot of User Profile Page"](./docs/screenshots/user_view.png)
 
-View of User Resource Interactions
+**View of User Resource Interactions**
 !["Screenshot of User Resource Interactions"](./docs/screenshots/like_rate_comment.png)
 
 ## Features
