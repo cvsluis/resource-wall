@@ -43,7 +43,7 @@
           <% if (userId) { %>
               <!-- Check if the current user is NOT the owner of the pin -->
               <% if (userId != pin.owner_id) { %>
-      
+
                   <!-- If current user has liked the pin -->
                   <% if (pin.user_has_liked) { %>
                       <!-- Display solid heart icon to indicate the pin is liked -->
@@ -52,13 +52,13 @@
                       <!-- Display regular heart icon to indicate the pin is not yet liked -->
                       <i class="fa-regular fa-heart" data-pin-id="<%= pinId %>"></i>
                   <% } %>
-      
+
 
               <% } else { %>
                   <!-- If the current user is the owner of the pin OR user is not logged in, display an invisible heart to maintain layout -->
                   <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
               <% } %>
-      
+
           <% } else { %>
               <!-- If user isn't logged in, display an invisible heart to maintain layout -->
               <i class="fa-invisible fa-heart" data-pin-id="<%= pinId %>"></i>
@@ -66,37 +66,36 @@
 
 
             <% if (pin.user_has_rated) { %>
-              <% console.log(pin.user_rating) %>
               <div class="stars">
                 <% for (let i = 1; i <= 5; i++) { %>
                   <% if (i <= pin.user_rating) { %>
                     <i class="fa-solid fa-star" id="user-rating-<%= i %>"></i>
                   <% } %>
+                  <% if (i > pin.user_rating) { %>
+                    <i class="fa-regular fa-star" id="user-empty"></i>
                 <% } %>
               </div>
-            <% } else { %>
-
-            <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
-              <div class="stars">
-                <input type="radio" value="1" name="rating" id="star-1" data-pin-id="<%= pinId %>">
-                <label for="star-1"><i class="fa-regular fa-star" id="icon-1"></i></label>
-
-                <input type="radio" value="2" name="rating" id="star-2" data-pin-id="<%= pinId %>">
-                <label for="star-2"><i class="fa-regular fa-star" id="icon-2"></i></label>
-
-                <input type="radio" value="3" name="rating" id="star-3" data-pin-id="<%= pinId %>">
-                <label for="star-3"><i class="fa-regular fa-star" id="icon-3"></i></label>
-
-                <input type="radio" value="4" name="rating" id="star-4" data-pin-id="<%= pinId %>">
-                <label for="star-4"><i class="fa-regular fa-star" id="icon-4"></i></label>
-
-                <input type="radio" value="5" name="rating" id="star-5" data-pin-id="<%= pinId %>">
-                <label for="star-5"><i class="fa-regular fa-star" id="icon-5"></i></label>
-              </div>
-            </form>
-
             <% } %>
+            <% } else { %>
+              <form method="POST" action="/api/pins/<%= pinId %>/ratings" id="rating-form">
+                <div class="stars">
+                  <input type="radio" value="1" name="rating" id="star-1" data-pin-id="<%= pinId %>">
+                  <label for="star-1"><i class="fa-regular fa-star" id="icon-1"></i></label>
 
+                  <input type="radio" value="2" name="rating" id="star-2" data-pin-id="<%= pinId %>">
+                  <label for="star-2"><i class="fa-regular fa-star" id="icon-2"></i></label>
+
+                  <input type="radio" value="3" name="rating" id="star-3" data-pin-id="<%= pinId %>">
+                  <label for="star-3"><i class="fa-regular fa-star" id="icon-3"></i></label>
+
+                  <input type="radio" value="4" name="rating" id="star-4" data-pin-id="<%= pinId %>">
+                  <label for="star-4"><i class="fa-regular fa-star" id="icon-4"></i></label>
+
+                  <input type="radio" value="5" name="rating" id="star-5" data-pin-id="<%= pinId %>">
+                  <label for="star-5"><i class="fa-regular fa-star" id="icon-5"></i></label>
+                </div>
+              </form>
+            <% } %>
         </div>
         </div>
         <div class="comments">
