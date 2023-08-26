@@ -112,8 +112,8 @@ const getOnePin = (pinId, userId) => {
           ELSE TRUE
       END AS user_has_liked,
       CASE
-          WHEN ratings.id = 0 THEN FALSE
-          ELSE TRUE
+          WHEN ratings.id >= 1 THEN TRUE
+          ELSE FALSE
       END AS user_has_rated
     FROM pins
     LEFT JOIN (
