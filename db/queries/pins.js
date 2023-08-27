@@ -1,15 +1,7 @@
 const db = require('../connection');
 
-const getUsers = () => {
-  return db.query('SELECT * FROM users;')
-    .then(data => {
-      return data.rows;
-    });
-};
-
 // model after LightBnB getAllProperties
 // check for categories, ratings
-// potential second parameter
 const getAllPins = (searchString) => {
   // Initialize an array to store the query parameters
   const queryParams = [];
@@ -45,7 +37,7 @@ const getAllPins = (searchString) => {
 };
 
 // takes in user id
-// return user's saved pins and liked pins in json format
+// return user's saved pins and liked pins
 const getUserPins = (userId) => {
   const query = `
   (SELECT
@@ -95,9 +87,8 @@ ORDER BY created_at DESC
     });
 };
 
-// takes in pin id
+// takes in pin id and user id
 // returns all information pertaining to that pin
-// also comments, likes and ratings
 const getOnePin = (pinId, userId) => {
   const queryString = `
     SELECT

@@ -1,14 +1,7 @@
 const db = require('../connection');
 
-const getUsers = () => {
-  return db.query('SELECT * FROM users;')
-    .then(data => {
-      return data.rows;
-    });
-};
-
 // takes in user id
-// return user information in json format
+// return user information
 const getUserProfile = (userID) => {
   // Use SQL query to fetch the user's profile data by ID
   const query = `
@@ -30,7 +23,7 @@ const getUserProfile = (userID) => {
 };
 
 // takes in user id and user object with any changes
-// returns confirmation message? (Changes saved successfully! or Failed to update.)
+// returns user profile information
 const editUserProfile = (id, userProfileChange) => {
   const queryParams = [
     userProfileChange.firstName,
