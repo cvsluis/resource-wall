@@ -18,6 +18,3 @@ VALUES
   ('https://github.com/cvsluis/resource-wall/blob/master/public/assets/technology.png?raw=true', 'Technology', 16),
   ('https://github.com/cvsluis/resource-wall/blob/master/public/assets/events.png?raw=true', 'Events', 17)
 ;
-
--- About image alt text and accessibility:
--- https://help.siteimprove.com/support/solutions/articles/80000863904-accessibility-image-alt-text-best-practices#:~:text=The%20text%20alternative%20for%20the,the%20functionality%20of%20the%20content.

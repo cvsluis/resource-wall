@@ -1,13 +1,10 @@
-<!-- Top nav bar (fixed) -->
 <div class="nav-container">
 <nav>
-  <!-- this will be an icon with link to home page (refresh if on home page): -->
   <div id="left-nav">
     <a href="/pins/"><img src="/assets/drawing1.png" alt="Linkfolio logo" /></a>
   </div>
   <div class="search">
     <form method="GET" action="/pins/">
-      <!-- Search bar will also include magnifying glass icon -->
       <div class="search-bar">
         <input type="search" class="fontAwesome" id="query" name="q" placeholder="&#xF002;" value="" autocomplete="off">
       </div>
@@ -17,7 +14,6 @@
             <input type="radio" value="<%= category.id %>" name="category" id="search-<%= category.id %>" class="category-button" data-category="<%= category.title %>" />
             <label for="search-<%= category.id %>"><%= category.title %></label>
           <% } %>
-          <!-- Add extra default radio button for search bar to submit without category being clicked -->
           <input type="radio" name="category" checked="true" value="none"></input>
         </div>
       </div>
@@ -25,9 +21,7 @@
   </div>
   <div id="right-nav">
     <% if (userId) { %>
-      <!-- Plus icon: -->
       <a href="/pins/new" class="hover-gray"><i class="fa-solid fa-plus"></i></a>
-      <!-- User icon: -->
       <a href="/users/<%= userId %>" class="hover-gray"><i class="fa-solid fa-user hover"></i></a>
       <% } %>
   </div>

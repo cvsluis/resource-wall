@@ -4,18 +4,17 @@ const pinQueries = require('../db/queries/pins');
 const interactionQueries = require('../db/queries/interactions');
 const timeago = require('timeago.js');
 
-// /pins/ - this is what the actual route would be
+// /pins/
 //View all pins
 router.get('/', (req, res) => {
   // logged in user
   const userId = req.session.userId;
   // call getAllPins with req.query as argument for search functionality
-  // do we want a limit?
   pinQueries.getAllPins(req.query.q)
     .then(pins => {
       interactionQueries.getAllCategories()
         .then(categories => {
-          // render index with pins and userId
+          // render index with pins, userId, and categories
           res.render("index", { pins, userId, categories });
         });
     })
@@ -62,7 +61,7 @@ router.get('/:id', (req, res) => {
               for (const comment of comments) {
                 comment.created_at = timeago.format(comment.created_at);
               }
-              // render pins_show with profile as template variable object
+              // render pins_show
               res.render("pins_show", { pin, comments, userId, pinId, categories });
             });
         });

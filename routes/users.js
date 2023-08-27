@@ -11,13 +11,6 @@ const userQueries = require('../db/queries/users');
 const pinQueries = require('../db/queries/pins');
 const interactionQueries = require('../db/queries/interactions');
 
-// will delete later
-// View all users
-router.get('/', (req, res) => {
-  // render views/users.ejs
-  res.render('users');
-});
-
 // /users/:id
 // View user profile page (don't need to be signed in)
 // Also view user's saved and liked pins

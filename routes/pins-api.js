@@ -115,7 +115,6 @@ router.post('/:id/likes', (req, res) => {
 router.delete('/:id/likes/delete', (req, res) => {
   const pinId = req.params.id;
   // check for session cookie
-  // change this to a hard-coded value (like 1 for user 1) for testing endpoint with curl command:
   const userId = req.session.userId;
   if (!userId) {
     return res.send({ error: "not logged in" });
