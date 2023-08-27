@@ -9,20 +9,6 @@ const express = require('express');
 const router = express.Router();
 const userQueries = require('../db/queries/users');
 
-// example GET request to get all users
-// will delete when finished with routes
-router.get('/', (req, res) => {
-  userQueries.getUsers()
-    .then(users => {
-      res.json({ users });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
 // /api/users/:id/edit
 // Edit user profile page (need to be signed in)
 router.post("/:id/edit", (req, res) => {

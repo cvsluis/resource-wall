@@ -1,18 +1,11 @@
 const db = require('../connection');
 
-// example function for reference
-const getUsers = () => {
-  return db.query('SELECT * FROM users;')
-    .then(data => {
-      return data.rows;
-    });
-};
-
 // returns all categories
 const getAllCategories = () => {
   return db.query('SELECT id, title FROM categories').then(data => data.rows);
 };
 
+// returns all comments
 const getComments = (pinId) => {
   const queryString = `
   SELECT *, users.name as name
@@ -55,7 +48,7 @@ const addRating = (rating) => {
     });
 };
 
-// takes in an object containing all of the rating details
+// takes in an object containing all of the like details
 // returns result.rows
 const addLike = (like) => {
   const queryParams = [like.pin_id, like.owner_id];
@@ -72,7 +65,7 @@ const addLike = (like) => {
     });
 };
 
-// takes in an object containing all of the rating details
+// takes in an object containing all of the like details
 // returns result.rows
 const removeLike = (unlike) => {
   const queryParams = [unlike.pin_id, unlike.owner_id];

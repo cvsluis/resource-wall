@@ -2,21 +2,17 @@
   <main class="grid">
     <% for (const pin of pins) { %>
       <article>
-        <!-- Displaying the pin's image -->
         <a href="/pins/<%= pin.id %>">
           <div class="image">
             <img src="<%= pin.image_url %>" alt="<%= pin.image_alt %>">
           </div>
         </a>
         <div class="meta-text">
-          <!-- Displaying the pin's title -->
           <a href="/pins/<%= pin.id %>" class="text-link">
             <h3><%= pin.title %></h3>
           </a>
           <div class="icon-username">
-            <!-- User icon -->
             <i id="comment-icon" class="fa-solid fa-user"></i>
-            <!-- Displaying the owner's name -->
             <a href="/users/<%= pin.owner_id %>" class="username">
               <h5><%= pin.owner_name %></h5>
             </a>
